@@ -1,0 +1,164 @@
+<html>
+   <head>
+      <title> Pokémon RBY </title>
+      <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <h1> Cerulean City </h1>
+      <hr>
+      <img id="pic" src="assets/cerulean.jpg" width="480">
+      <p id="text"> You arrive in Cerulean City to find a pokémon gym and a bridge full of trainers. 
+                     You can either cross the bridge to find wild pokémon or challenge the gym leader.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="pewter" href="pewter.html"><button> Go to Pewter City/Mt. Moon </button></a>
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         pewter.href += location.search;
+         var count=0;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var badges=+queryString.get("badges");
+         if(dex1 & 4){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+            <a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+         }
+         if(!(badges & 64)){
+            map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+         }
+         else{
+            options.innerHTML+=`<a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+         }
+         if(!(badges & 32)){
+            options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+         }
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/abra.gif";
+            text.innerHTML=`You cross the bridge, defeating the various trainers, and find a small patch of grass. 
+                           A wild Abra appeared!`;
+            options.innerHTML=`<button onclick="abra()"> Throw poké ball at Abra </button>
+                                 <a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+            if(badges & 64){
+               options.innerHTML+=`<a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+            }
+            if(!(badges & 32)){
+               options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+            }
+         }
+         function abra(){
+            pb--;
+            queryString.set("pb",pb);
+            if(count>0){
+               dex1 -= 6;
+               queryString.set("dex1",dex1);
+               dex.src="dex.html?"+queryString;
+               pic.src="assets/kadabra.gif";
+               text.innerHTML=`Abra was caught! Oh? Abra evolved into Kadabra!`;
+               options.innerHTML=`
+               <a href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+               if(badges & 64){
+                  options.innerHTML+=`<a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+               }
+               if(!(badges & 32)){
+                  options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+               }
+               if(!(badges & 64)){
+                  map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+            }
+            else{
+               text.innerHTML=`Oh no! Abra broke free! Try again?`;
+               options.innerHTML=`<button onclick="abra()"> Throw poké ball at Abra </button>`;
+               map.innerHTML=``;
+            }
+            count++;
+            inventory.src="inventory.html?"+queryString;
+         }
+         function leader(){
+            pic.src="assets/misty.webp";
+            text.innerHTML=`Gym leader Misty wants to fight. `;
+            if(!(dex1 & 32)){
+               text.innerHTML+=`Your Pikachu's electric type moves easily defeat Misty's water type pokémon. 
+                                 Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=64;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               if(dex1 & 4){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+               }
+               options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
+               <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+               if(!(badges & 32)){
+                  options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else if(dex1 & 1024){
+               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Misty's water type pokémon. 
+                                 Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=64;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               if(dex1 & 4){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+               }
+               options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
+               <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+               if(!(badges & 32)){
+                  options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else if(!(dex1 & 16)){
+               text.innerHTML+=`Your Clefairy uses sing to put Misty's pokémon to sleep so you can defeat them. 
+                                 Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=64;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               if(dex1 & 4){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+               }
+               options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
+               <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
+               if(!(badges & 32)){
+                  options.innerHTML+=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else{
+               text.innerHTML+=`Misty defeats you because you don't have enough pokémon of the right type. Try to catch some more pokémon.`;
+               options.innerHTML=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+            }
+         }
+      </script>
+   </body>
+</html>

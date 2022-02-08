@@ -1,0 +1,112 @@
+<html>
+   <head>
+      <style>
+         body{
+            background-image: url("assets/dexbackground.png");
+         }
+      </style>
+   </head>
+   <body>
+      Pokédex:
+      <hr>
+      <table>
+         <tr>
+            <td> <img id="bulb" src="assets/bulbasaurthumb.png" style="opacity:0" height="50" width="40" </th>  <!-- +1024 -->
+            <td> <img id="char" src="assets/charmanderthumb.png" style="opacity:0" height="50" width="40" </th> <!-- +512  -->
+            <td> <img id="squi" src="assets/squirtlethumb.png" style="opacity:0" height="50" width="40" </th>   <!-- -256  -->
+            <td> <img id="cate" src="assets/caterpiethumb.png" style="opacity:0" height="50" width="40" </th>   <!-- +128  -->
+            <td> <img id="weed" src="assets/weedlethumb.png" style="opacity:0" height="50" width="40" </th>     <!-- +64   -->
+            <td> <img id="pika" src="assets/pikachuthumb.png" style="opacity:0" height="50" width="40" </th>    <!-- -32   -->
+            <td> <img id="clef" src="assets/clefairythumb.png" style="opacity:0" height="50" width="40" </th>   <!-- -16   -->
+            <td> <img id="digl" src="assets/diglettthumb.png" style="opacity:0" height="50" width="40" </th>    <!-- -8    -->
+            <td> <img id="abra" src="assets/abrathumb.png" style="opacity:0" height="50" width="40" </th>       <!-- -4    -->
+            <td> <img id="kada" src="assets/kadabrathumb.png" style="opacity:0" height="50" width="40" </th>    <!-- -2    -->
+            <td> <img id="dodu" src="assets/doduothumb.png" style="opacity:0" height="50" width="40" </th>      <!-- +1    -->
+         </tr>
+         <tr>
+            <td> <img id="geng" src="assets/gengarthumb.png" style="opacity:0" height="50" width="40" </th>     <!-- +1024 -->
+            <td> <img id="scyt" src="assets/scytherthumb.png" style="opacity:0" height="50" width="40" </th>    <!-- +512  -->
+            <td> <img id="pins" src="assets/pinsirthumb.png" style="opacity:0" height="50" width="40" </th>     <!-- -256  -->
+            <td> <img id="lapr" src="assets/laprasthumb.png" style="opacity:0" height="50" width="40" </th>     <!-- +128  -->
+            <td> <img id="omas" src="assets/omastarthumb.png" style="opacity:0" height="50" width="40" </th>    <!-- +64   -->
+            <td> <img id="kabu" src="assets/kabutopsthumb.png" style="opacity:0" height="50" width="40" </th>   <!-- -32   -->
+            <td> <img id="arti" src="assets/articunothumb.png" style="opacity:0" height="50" width="40" </th>   <!-- -16   -->
+            <td> <img id="zapd" src="assets/zapdosthumb.png" style="opacity:0" height="50" width="40" </th>     <!-- -8    -->
+            <td> <img id="molt" src="assets/moltresthumb.png" style="opacity:0" height="50" width="40" </th>    <!-- -4    -->
+            <td> <img id="mewt" src="assets/mewtwothumb.png" style="opacity:0" height="50" width="40" </th>     <!-- -2    -->
+            <td> <img id="mew" src="assets/mewthumb.png" style="opacity:0" height="50" width="40" </th>         <!-- +1    -->
+         </tr>
+      </table>
+      <script>
+         var queryString = new URLSearchParams(location.search);
+         var dex1 = +queryString.get("dex1");
+         var dex2 = +queryString.get("dex2");
+         if(dex1 & 1024){
+            bulb.style="opacity:1";
+         }
+         if(dex1 & 512){
+            char.style="opacity:1";
+         }
+         if(!(dex1 & 256)){
+            squi.style="opacity:1";
+         }
+         if(dex1 & 128){
+            cate.style="opacity:1";
+         }
+         if(dex1 & 64){
+            weed.style="opacity:1";
+         }
+         if(!(dex1 & 32)){
+            pika.style="opacity:1";
+         }
+         if(!(dex1 & 16)){
+            clef.style="opacity:1";
+         }
+         if(!(dex1 & 8)){
+            digl.style="opacity:1";
+         }
+         if(!(dex1 & 4)){
+            abra.style="opacity:1";
+         }
+         if(!(dex1 & 2)){
+            kada.style="opacity:1";
+         }
+         if(dex1 & 1){
+            dodu.style="opacity:1";
+         }
+         if(dex2 & 1024){
+            geng.style="opacity:1";
+         }
+         if(dex2 & 512){
+            scyt.style="opacity:1";
+         }
+         if(!(dex2 & 256)){
+            pins.style="opacity:1";
+         }
+         if(dex2 & 128){
+            lapr.style="opacity:1";
+         }
+         if(dex2 & 64){
+            omas.style="opacity:1";
+         }
+         if(!(dex2 & 32)){
+            kabu.style="opacity:1";
+         }
+         if(!(dex2 & 16)){
+            arti.style="opacity:1";
+         }
+         if(!(dex2 & 8)){
+            zapd.style="opacity:1";
+         }
+         if(!(dex2 & 4)){
+            molt.style="opacity:1";
+         }
+         if(!(dex2 & 2)){
+            mewt.style="opacity:1";
+         }
+         if(dex2 & 1){
+            mew.style="opacity:1";
+         }
+      </script>
+   </body>
+</html>

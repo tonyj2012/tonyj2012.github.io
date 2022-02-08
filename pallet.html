@@ -1,0 +1,81 @@
+<html>
+   <head>
+      <title> Pokémon RBY </title>
+      <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <h1> Pallet Town </h1>
+      <hr>
+      <img id="pallet" src="assets/pallet.jpg" width="480">
+      <p id="text"> You wake up in your home in Pallet town. You go to Professor Oak's lab to choose a pokémon. He gives you 5 poké balls. 
+                     Hopefully, you didn't sleep too long and he has some pokémon left. </p>
+      <h4> What would you like to do? </h4>
+      <div id="options"></div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var dex1=+queryString.get("dex1");
+         var dex2=+queryString.get("dex2");
+         if(!(dex1 & 1024) && !(dex1 & 512) && (dex1 & 256) && (dex1 & 32)){
+            options.innerHTML=`<button id="choose" onclick="chooseStarter()"> Choose a pokémon </button>`;
+         }
+         options.innerHTML+=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         if(dex1 & 1){
+            map.innerHTML=`<a href="map.html?"${queryString}"><button> Exit to map </button></a>`;
+         }
+         if(dex2 & 128){
+            map.innerHTML+=`<a href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+         }
+         function chooseStarter(){
+            pallet.src="assets/starters.jpg";
+            text.innerHTML=`The professor has four pokémon left to choose. You can only choose one. Will you choose the grass type Bulbasaur, 
+                              the fire type Charmander, the water type Squirtle, or the electric type Pikachu?`;
+            options.innerHTML=(
+               `<button onclick="bulbasaur()"> Choose Bulbasaur </button>
+               <button onclick="charmander()"> Choose Charmander </button>
+               <button onclick="squirtle()"> Choose Squirtle </button>
+               <button onclick="pikachu()"> Choose Pikachu </button>
+               <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`
+            );
+         }
+         function bulbasaur(){
+            dex1 += 1024;
+            queryString.set("dex1",dex1);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Great choice. Now, you can explore a new area.`;
+            options.innerHTML=`
+            <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         }
+         function charmander(){
+            dex1 += 512;
+            queryString.set("dex1",dex1);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Great choice. Now, you can explore a new area.`;
+            options.innerHTML=`
+            <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         }
+         function squirtle(){
+            dex1 -= 256;
+            queryString.set("dex1",dex1);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Great choice. Now, you can explore a new area.`;
+            options.innerHTML=`
+            <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         }
+         function pikachu(){
+            dex1 -= 32;
+            queryString.set("dex1",dex1);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Great choice. Now, you can explore a new area.`;
+            options.innerHTML=`
+            <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         }
+      </script>
+   </body>
+</html>

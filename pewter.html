@@ -1,0 +1,124 @@
+<html>
+   <head>
+      <title> Pokémon RBY </title>
+      <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <h1> Pewter City/Mt. Moon </h1>
+      <hr>
+      <img id="pic" src="assets/pewter.jpg" width="480">
+      <p id="text"> You arrive in Pewter City to find a pokémon gym and a lab you can't access. </p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="viridian" href="viridian.html"><button> Go to Viridian City/Forest </button></a>
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         viridian.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var badges=+queryString.get("badges");
+         if(!(badges & 128)){
+            map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+         }
+         else if(dex1 & 16){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+            <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         else{
+            options.innerHTML=`
+            <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/clefairy.gif";
+            text.innerHTML=`After defeating Brock, you move on to Mt. Moon where you pick up a strange fossil and come across a new pokémon. 
+                           A wild Clefairy appeared!`;
+            options.innerHTML=(
+               `<button onclick="clefairy()"> Throw poké ball at Clefairy </button>
+               <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+               <a href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`
+            );
+         }
+         function clefairy(){
+            pb -= 1;
+            dex1 -= 16;
+            queryString.set("pb",pb);
+            queryString.set("dex1",dex1);
+            inventory.src="inventory.html?"+queryString;
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Clefairy was caught!`;
+            options.innerHTML=`
+            <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+            <a href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         function leader(){
+            pic.src="assets/brock.gif";
+            text.innerHTML=`Gym leader Brock wants to fight. `;
+            if(!(dex1 & 256)){
+               text.innerHTML+=`Your Squirtle's water type moves easily defeat Brock's rock/ground type pokémon. 
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+               <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else if(dex1 & 1024){
+               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Brock's rock/ground type pokémon. 
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+               <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else if((dex1 & 128) && (dex1 & 64)){
+               text.innerHTML+=`Your Caterpie and Weedle combine forces to barely defeat Brock's rock/ground type pokémon. 
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
+               <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else{
+               text.innerHTML+=`Brock defeats you because you don't have enough pokémon of the right type. Try to catch some more pokémon.`;
+               options.innerHTML=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+            }
+         }
+      </script>
+   </body>
+</html>

@@ -1,0 +1,117 @@
+<html>
+   <head>
+      <title> Pokémon RBY </title>
+      <link id="headimg" rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <h1> Unknown Dungeon </h1>
+      <hr>
+      <img id="unknown" src="assets/unknown.png" width="480">
+      <p id="text"> You enter a hidden cave that wasn't open before. After traversing the maze-like cave, you come to the end where you find a powerful pokémon. </p>
+      <h4 id="question"> What would you like to do? </h4>
+      <div id="options">
+      <button id="spawns" onclick="spawn()"> Catch pokémon </button>
+      <a id="map" href="map.html"><button> Exit to map </button></a>
+      </div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         map.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var mb=+queryString.get("mb");
+         var dex2=+queryString.get("dex2");
+         if(!(dex2 & 2)){
+            bonus();
+         }
+         function spawn(){
+            unknown.src="assets/mewtwo.gif";
+            text.innerHTML=`A wild Mewtwo appeared!`;
+            spawns.innerHTML=`Throw poké ball`;
+            spawns.setAttribute("onclick","catches()");
+         }
+         function catches(){
+            if(pb==1){
+               text.innerHTML=`Mewtwo was caught!`;
+               dex2 -= 2;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               spawns.innerHTML=`Go to bonus challenge`;
+               spawns.setAttribute("onclick","bonus()");
+            }
+            else{
+               text.innerHTML=`Mewtwo broke free. Try again?`;
+            }
+            pb -= 1;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
+         function bonus(){
+            unknown.src="assets/mewsil.jpg";
+            text.innerHTML=`As you leave the unknown dungeon, you catch a glimpse of a rare pokemon in the distance. 
+                           You try to follow it, but it's going too fast. You come across another trainer with a bike and ask to borrow it. 
+                           But they're a math major! They'll only let you borrow it if you answer the following question:`;
+            question.innerHTML=`What is the smallest number expressible as the sum of two positive cubes in three different ways? 
+                                I.e. find the smallest number x such that x=a<sup>3</sup>+b<sup>3</sup>=c<sup>3</sup>+d<sup>3</sup>=e<sup>3</sup>+f<sup>3</sup> 
+                                where the pairs (a,b),(c,d),(e,f) are distinct. (Do not include commas.)`;
+            options.innerHTML=(
+               `<label>x=</label>
+               <input type="text" id="inputText">
+               <input type="button" value="Submit" onclick="mew()">
+               <a id="map" href="map.html?${queryString}"><button> Exit to map </button></a>`
+            );
+         }
+         function mew(){
+            if(inputText.value==[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){                     /*"87539319" = [!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]*/
+               unknown.src="assets/mew.gif";
+               text.innerHTML=`A wild Mew appeared!`;
+               question.innerHTML=`What would you like to do?`;
+               options.innerHTML=(`<button onclick="catchmew()"> Throw pokeball </button>
+                                 <a id="map" href="map.html?${queryString}"><button> Exit to map </button></a>`);
+            }
+            else{
+               options.innerHTML=(
+                  `<p> Incorrect. Try Again </p>
+                  <label>x=</label>
+                  <input type="text" id="inputText">
+                  <input type="button" value="Submit" onclick="mew()">
+                  <a id="map" href="map.html?${queryString}"><button> Exit to map </button></a>`
+               );
+            }
+         }
+         function catchmew(){
+            if(mb==0){
+               text.innerHTML=`You have no poké balls left! You desperately look around for anything that might contain a pokeball. 
+                              There's a small bag hooked onto the bike. You open it to find a master ball! You can either take it to spite the math major 
+                              or let Mew go free.`;
+               options.innerHTML=(`<button onclick="catchmew()"> Throw masterball </button>
+                                    <button onclick="release()"> Let Mew go </button>
+                                    <a id="map" href="map.html?${queryString}"><button> Exit to map </button></a>`);
+               mb += 1;
+               queryString.set("mb",mb);
+               inventory.src="inventory.html?"+queryString;
+               headimg.href="assets/masterball.jpg";
+            }
+            else{
+               text.innerHTML=`Mew was caught! Congratulations! You've completed this game.`;
+               dex2 += 1;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               options.innerHTML=`<a href="index.html"><button> Start Over </button></a>`;
+               mb -= 1;
+               queryString.set("mb",mb);
+               inventory.src="inventory.html?"+queryString;
+            }
+         }
+         function release(){
+            text.innerHTML=`Mew giggles and flies away but turns its head for a second to look at you before disappearing completely. 
+                           Congratulations! You've completed this game.`;
+            options.innerHTML=`<a href="index.html"><button> Start Over </button></a>`;
+         }
+      </script>
+   </body>
+</html>
