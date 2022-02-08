@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
       <link rel="stylesheet" href="style.css">
    </head>
@@ -8,8 +8,8 @@
       <h1> Cerulean City </h1>
       <hr>
       <img id="pic" src="assets/cerulean.jpg" width="480">
-      <p id="text"> You arrive in Cerulean City to find a pokémon gym and a bridge full of trainers. 
-                     You can either cross the bridge to find wild pokémon or challenge the gym leader.</p>
+      <p id="text"> You arrive in Cerulean City to find a pok&#233;mon gym and a bridge full of trainers. 
+                     You can either cross the bridge to find wild pok&#233;mon or challenge the gym leader.</p>
       <h4> What would you like to do? </h4>
       <div id="options">
       <a id="pewter" href="pewter.html"><button> Go to Pewter City/Mt. Moon </button></a>
@@ -28,7 +28,7 @@
          var dex1=+queryString.get("dex1");
          var badges=+queryString.get("badges");
          if(dex1 & 4){
-            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
             <a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
          }
          if(!(badges & 64)){
@@ -92,7 +92,7 @@
             pic.src="assets/misty.webp";
             text.innerHTML=`Gym leader Misty wants to fight. `;
             if(!(dex1 & 32)){
-               text.innerHTML+=`Your Pikachu's electric type moves easily defeat Misty's water type pokémon. 
+               text.innerHTML+=`Your Pikachu's electric type moves easily defeat Misty's water type pok&#233;mon. 
                                  Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=64;
@@ -100,7 +100,7 @@
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
                if(dex1 & 4){
-                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>`;
                }
                options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
                <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
@@ -113,7 +113,7 @@
                else{map.innerHTML=``;}
             }
             else if(dex1 & 1024){
-               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Misty's water type pokémon. 
+               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Misty's water type pok&#233;mon. 
                                  Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=64;
@@ -121,7 +121,7 @@
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
                if(dex1 & 4){
-                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>`;
                }
                options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
                <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
@@ -134,7 +134,7 @@
                else{map.innerHTML=``;}
             }
             else if(!(dex1 & 16)){
-               text.innerHTML+=`Your Clefairy uses sing to put Misty's pokémon to sleep so you can defeat them. 
+               text.innerHTML+=`Your Clefairy uses sing to put Misty's pok&#233;mon to sleep so you can defeat them. 
                                  Congratulations! You've earned the Cascade badge! Misty gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=64;
@@ -142,7 +142,7 @@
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
                if(dex1 & 4){
-                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>`;
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>`;
                }
                options.innerHTML+=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>
                <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>`;
@@ -155,8 +155,14 @@
                else{map.innerHTML=``;}
             }
             else{
-               text.innerHTML+=`Misty defeats you because you don't have enough pokémon of the right type. Try to catch some more pokémon.`;
-               options.innerHTML=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+               text.innerHTML+=`Misty defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.`;
+               if(dex1 & 4){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
+                                    <a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+               }
+               else{
+                  options.innerHTML=`<a id="pewter" href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+               }
             }
          }
       </script>

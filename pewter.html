@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
       <link rel="stylesheet" href="style.css">
    </head>
@@ -8,7 +8,7 @@
       <h1> Pewter City/Mt. Moon </h1>
       <hr>
       <img id="pic" src="assets/pewter.jpg" width="480">
-      <p id="text"> You arrive in Pewter City to find a pokémon gym and a lab you can't access. </p>
+      <p id="text"> You arrive in Pewter City to find a pok&#233;mon gym and a lab you can't access. </p>
       <h4> What would you like to do? </h4>
       <div id="options">
       <a id="viridian" href="viridian.html"><button> Go to Viridian City/Forest </button></a>
@@ -29,7 +29,7 @@
             map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
          }
          else if(dex1 & 16){
-            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
             <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
             <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
          }
@@ -43,7 +43,7 @@
          }
          function catchMon(){
             pic.src="assets/clefairy.gif";
-            text.innerHTML=`After defeating Brock, you move on to Mt. Moon where you pick up a strange fossil and come across a new pokémon. 
+            text.innerHTML=`After defeating Brock, you move on to Mt. Moon where you pick up a strange fossil and come across a new pok&#233;mon. 
                            A wild Clefairy appeared!`;
             options.innerHTML=(
                `<button onclick="clefairy()"> Throw poké ball at Clefairy </button>
@@ -67,14 +67,14 @@
             pic.src="assets/brock.gif";
             text.innerHTML=`Gym leader Brock wants to fight. `;
             if(!(dex1 & 256)){
-               text.innerHTML+=`Your Squirtle's water type moves easily defeat Brock's rock/ground type pokémon. 
+               text.innerHTML+=`Your Squirtle's water type moves easily defeat Brock's rock/ground type pok&#233;mon. 
                                  Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
-               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
                <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
                <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
                if(dex1 & 1){
@@ -83,14 +83,14 @@
                else{map.innerHTML=``;}
             }
             else if(dex1 & 1024){
-               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Brock's rock/ground type pokémon. 
+               text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Brock's rock/ground type pok&#233;mon. 
                                  Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
-               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
                <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
                <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
                if(dex1 & 1){
@@ -99,14 +99,14 @@
                else{map.innerHTML=``;}
             }
             else if((dex1 & 128) && (dex1 & 64)){
-               text.innerHTML+=`Your Caterpie and Weedle combine forces to barely defeat Brock's rock/ground type pokémon. 
+               text.innerHTML+=`Your Caterpie and Weedle combine forces to barely defeat Brock's rock/ground type pok&#233;mon. 
                                  Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);
                queryString.set("badges",badges);
                inventory.src="inventory.html?"+queryString;
-               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
                <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
                <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
                if(dex1 & 1){
@@ -115,7 +115,7 @@
                else{map.innerHTML=``;}
             }
             else{
-               text.innerHTML+=`Brock defeats you because you don't have enough pokémon of the right type. Try to catch some more pokémon.`;
+               text.innerHTML+=`Brock defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.`;
                options.innerHTML=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
             }
          }

@@ -1,6 +1,6 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
       <link rel="stylesheet" href="style.css">
    </head>
@@ -8,8 +8,8 @@
       <h1> Viridian City/Forest </h1>
       <hr>
       <img id="viridian" src="assets/viridian.jpg" width="480">
-      <p id="text"> You arrive in Viridian City where the largest building, a pokémon gym, seems to be abandoned. 
-                     You move on to a dense forest with lots of bug type pokémon. </p>
+      <p id="text"> You arrive in Viridian City where the largest building, a pok&#233;mon gym, seems to be abandoned. 
+                     You move on to a dense forest with lots of bug type pok&#233;mon. </p>
       <h4> What would you like to do? </h4>
       <div id="options">
       <a id="pallet" href="pallet.html"><button> Go to Pallet Town </button></a>
@@ -35,7 +35,7 @@
             map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
          }
          if(!(dex1 & 128) || !(dex1 & 64)){
-            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pokémon </button>
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
             <a href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
             <a href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
          }

@@ -1,11 +1,83 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Vermilion City </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/vermilion.jpg" width="480">
+      <p id="text"> You arrive in Vermilion City and see a large ship as it leaves the port. You also find another gym and a small cave. 
+                     You can either explore the cave or challenge the gym leader.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="cerulean" href="cerulean.html"><button> Go to Cerulean City </button></a>
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         cerulean.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var badges=+queryString.get("badges");
+         if(dex1 & 8){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the cave </button>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         if(badges & 32){
+            map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+         }
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/diglett.gif";
+            text.innerHTML=`You've entered Diglett's Cave. 
+                           A wild Diglett appeared!`;
+            options.innerHTML=`<button onclick="diglett()"> Throw poké ball at Diglett </button>
+                                 <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         function diglett(){
+            pb--;
+            dex1 -= 8;
+            queryString.set("pb",pb);
+            queryString.set("dex1",dex1);
+            inventory.src="inventory.html?"+queryString;
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Diglett was caught!`;
+            options.innerHTML=`
+            <a href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+         }
+         function leader(){
+            pic.src="assets/surge.gif";
+            text.innerHTML=`Gym leader Lt. Surge wants to fight. `;
+            if(!(dex1 & 8)){
+               text.innerHTML+=`Your Diglett's ground type moves easily defeat Lt. Surge's electric type pok&#233;mon. 
+                                 Congratulations! You've earned the Thunder badge! Lt. Surge gives you 3 poké balls as a reward.`;
+               pb+=3;
+               badges-=32;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`
+               <a href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{map.innerHTML=``;}
+            }
+            else{
+               text.innerHTML+=`Lt. Surge defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.`;
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the cave </button>
+                                    <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
+            }
+         }
+      </script>
    </body>
 </html>
