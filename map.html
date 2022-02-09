@@ -2,11 +2,71 @@
    <head>
       <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
       <h1> Kanto Region </h1>
       <hr>
       <img src="assets/map.png" width="480">
-      <p><a href="pallet.html">Pallet</a></p>
+      <hr>
+      <table>
+         <tr>
+            <td><a id="pallet" href="pallet.html"><button> Pallet Town </button></a></td>
+            <td><a id="viridian" href="viridian.html"><button> Viridian City/Forest </button></a></td>
+            <td><a id="pewter" href="pewter.html"><button> Pewter City/Mt. Moon </button></a></td>
+            <td><a id="cerulean" href="cerulean.html"><button> Cerulean City </button></a></td>
+            <td><a id="vermilion" href="vermilion.html"><button> Vermilion City </button></a></td>
+         </tr>
+         <tr>
+            <td><a id="lavender" href="lavender.html"><button> Lavender Town </button></a></td>
+            <td><a id="celadon" href="celadon.html"><button> Celadon City </button></a></td>
+            <td><a id="fuschia" href="fuschia.html"><button> Fuschia City/Safari Zone </button></a></td>
+            <td><a id="saffron" href="saffron.html"><button> Saffron City </button></a></td>
+            <td><a id="cinnabar" href="cinnabar.html"></a></td>
+         </tr>
+         <tr>
+            <td><a id="power" href="power.html"></a></td>
+            <td><a id="seafoam" href="seafoam.html"></a></td>
+            <td><a id="indigo" href="indigo.html"></a></td>
+            <td><a id="unknown" href="unknown.html"></a></td>
+         </tr>
+      </table>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         pallet.href += location.search;
+         viridian.href += location.search;
+         pewter.href += location.search;
+         cerulean.href += location.search;
+         vermilion.href += location.search;
+         lavender.href += location.search;
+         celadon.href += location.search;
+         fuschia.href += location.search;
+         saffron.href += location.search;
+         cinnabar.href += location.search;
+         power.href += location.search;
+         seafoam.href += location.search;
+         indigo.href += location.search;
+         unknown.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var badges=+queryString.get("badges");
+         /*If player has volcano badge*/
+         if(badges & 2){
+            cinnabar.innerHTML=`<button> Cinnabar Island </button>`;
+         }
+         /*If player has all 8 badges*/
+         if(badges & 1){
+            power.innerHTML=`<button> Power Plant </button>`;
+            seafoam.innerHTML=`<button> Seafoam Island </button>`;
+            indigo.innerHTML=`<button> Victory Road/Indigo Plateau </button>`;
+         }
+         /*If player has all 8 badges and elite four badge*/
+         if(badges == 475){
+            unknown.innerHTML=`<button> Unknown Dungeon </button>`;
+         }
+      </script>
    </body>
 </html>

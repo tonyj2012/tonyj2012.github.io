@@ -5,20 +5,24 @@
       <hr>
       <table>
          <tr>
-            <th> <img src="assets/pokeball.png" height="20" width="20" </th> 
-            <th> <img id="mbimg" src="assets/masterball.jpg" style="opacity:0" height="20" width="15" </th>
-            <th> <img id="boulder" src="assets/boulder.jpg" style="opacity:0" height="20" width="15" </th> <!--  +128  -->
-            <th> <img id="cascade" src="assets/cascade.jpg" style="opacity:0" height="20" width="15" </th> <!--  +64   -->
-            <th> <img id="thunder" src="assets/thunder.jpg" style="opacity:0" height="20" width="15" </th> <!--  -32   -->
-            <th> <img id="rainbow" src="assets/rainbow.jpg" style="opacity:0" height="20" width="15" </th> <!--  +16   -->
-            <th> <img id="soul" src="assets/soul.jpg" style="opacity:0" height="20" width="15" </th>       <!--  +8    -->
-            <th> <img id="marsh" src="assets/marsh.jpg" style="opacity:0" height="20" width="15" </th>     <!--  -4    -->
-            <th> <img id="volcano" src="assets/volcano.jpg" style="opacity:0" height="20" width="15" </th> <!--  +2    -->
-            <th> <img id="earth" src="assets/earth.jpg" style="opacity:0" height="20" width="15" </th>     <!--  +1    -->
+            <th> <img src="assets/pokeball.png" height="20" width="20"> </th> 
+            <th> <img id="mbimg" src="assets/masterball.jpg" style="opacity:0" height="20" width="15"> </th>
+            <th> <img id="boulder" src="assets/boulder.jpg" style="opacity:0" height="20" width="15"> </th> <!--  +128  -->
+            <th> <img id="cascade" src="assets/cascade.jpg" style="opacity:0" height="20" width="15"> </th> <!--  +64   -->
+            <th> <img id="thunder" src="assets/thunder.jpg" style="opacity:0" height="20" width="15"> </th> <!--  -32   -->
+            <th> <img id="rainbow" src="assets/rainbow.jpg" style="opacity:0" height="20" width="15"> </th> <!--  +16   -->
+            <th> <img id="soul" src="assets/soul.jpg" style="opacity:0" height="20" width="15"> </th>       <!--  +8    -->
+            <th> <img id="marsh" src="assets/marsh.jpg" style="opacity:0" height="20" width="15"> </th>     <!--  -4    -->
+            <th> <img id="volcano" src="assets/volcano.jpg" style="opacity:0" height="20" width="15"> </th> <!--  +2    -->
+            <th> <img id="earth" src="assets/earth.jpg" style="opacity:0" height="20" width="15"> </th>     <!--  +1    -->
          </tr>
          <tr>
             <td id="pb" style="text-align:center">0</td>
             <td id="mbcount" style="text-align:center;opacity:0">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><img id="ef" style="text-align:right;opacity:0" src="assets/efbadge2.jpg" height="20" width="15"></td>
          </tr>
       </table>
       <script>
@@ -30,6 +34,9 @@
          if(mb>0){
             mbimg.style="opacity:1";
             mbcount.style="text-align:center;opacity:1";
+         }
+         if(badges & 256){
+            ef.style="text-align:right;opacity:1";
          }
          if(badges & 128){
             boulder.style="opacity:1";

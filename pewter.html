@@ -25,9 +25,11 @@
          var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
          var badges=+queryString.get("badges");
+         /*If player doesn't have boulder badge*/
          if(!(badges & 128)){
             map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
          }
+         /*If player doesn't have Clefairy*/
          else if(dex1 & 16){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
             <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
@@ -38,6 +40,7 @@
             <a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
             <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
          }
+         /*If player has Doduo*/
          if(dex1 & 1){
             map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
          }
@@ -46,7 +49,7 @@
             text.innerHTML=`After defeating Brock, you move on to Mt. Moon where you pick up a strange fossil and come across a new pok&#233;mon. 
                            A wild Clefairy appeared!`;
             options.innerHTML=(
-               `<button onclick="clefairy()"> Throw poké ball at Clefairy </button>
+               `<button onclick="clefairy()"> Throw pok&#233; ball at Clefairy </button>
                <a href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>
                <a href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`
             );
@@ -66,9 +69,10 @@
          function leader(){
             pic.src="assets/brock.gif";
             text.innerHTML=`Gym leader Brock wants to fight. `;
+            /*If player has Squirtle*/
             if(!(dex1 & 256)){
                text.innerHTML+=`Your Squirtle's water type moves easily defeat Brock's rock/ground type pok&#233;mon. 
-                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 pok&#233; balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);
@@ -82,9 +86,10 @@
                }
                else{map.innerHTML=``;}
             }
+            /*If player has Bulbasaur*/
             else if(dex1 & 1024){
                text.innerHTML+=`Your Bulbasaur's grass type moves easily defeat Brock's rock/ground type pok&#233;mon. 
-                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 pok&#233; balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);
@@ -98,9 +103,10 @@
                }
                else{map.innerHTML=``;}
             }
+            /*If player has Caterpie and Weedle*/
             else if((dex1 & 128) && (dex1 & 64)){
                text.innerHTML+=`Your Caterpie and Weedle combine forces to barely defeat Brock's rock/ground type pok&#233;mon. 
-                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 poké balls as a reward.`;
+                                 Congratulations! You've earned the Boulder badge! Brock gives you 3 pok&#233; balls as a reward.`;
                pb+=3;
                badges+=128;
                queryString.set("pb",pb);

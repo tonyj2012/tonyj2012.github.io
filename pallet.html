@@ -8,7 +8,7 @@
       <h1> Pallet Town </h1>
       <hr>
       <img id="pallet" src="assets/pallet.jpg" width="480">
-      <p id="text"> You wake up in your home in Pallet town. You go to Professor Oak's lab to choose a pok&#233;mon. He gives you 5 poké balls. 
+      <p id="text"> You wake up in your home in Pallet town. You go to Professor Oak's lab to choose a pok&#233;mon. He gives you 5 pok&#233; balls. 
                      Hopefully, you didn't sleep too long and he has some pok&#233;mon left. </p>
       <h4> What would you like to do? </h4>
       <div id="options"></div>
@@ -22,13 +22,16 @@
          var queryString = new URLSearchParams(location.search);
          var dex1=+queryString.get("dex1");
          var dex2=+queryString.get("dex2");
+         /*If player doesn't have a starter*/
          if(!(dex1 & 1024) && !(dex1 & 512) && (dex1 & 256) && (dex1 & 32)){
             options.innerHTML=`<button id="choose" onclick="chooseStarter()"> Choose a pok&#233;mon </button>`;
          }
          options.innerHTML+=`<a id="viridian" href="viridian.html?${queryString}"><button> Go to Viridian City/Forest </button></a>`;
+         /*If player has Doduo*/
          if(dex1 & 1){
-            map.innerHTML=`<a href="map.html?"${queryString}"><button> Exit to map </button></a>`;
+            map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
          }
+         /*If player has Lapras*/
          if(dex2 & 128){
             map.innerHTML+=`<a href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
          }

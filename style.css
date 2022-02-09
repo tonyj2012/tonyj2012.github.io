@@ -10,3 +10,6 @@ body{
    background-color: #eff; 
    font-family: times new roman;
 }
+td{
+   text-align: center;
+}

@@ -1,11 +1,173 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Fuschia City/Safari Zone </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/fuschia.jpg" width="480">
+      <p id="text"> You arrive in Fushia City where you find a large game preserve filled with pok&#233;mon called the Safari Zone. You also find another gym. 
+                     You can either enter the Safari Zone or challenge the gym leader.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="celadon" href="celadon.html"><button> Go to Celadon City </button></a>
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         celadon.href += location.search;
+         var count=0;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var dex2=+queryString.get("dex2");
+         var badges=+queryString.get("badges");
+         /*If player doesn't have Scyther or Pinsir*/
+         if(!(dex2 & 512) && (dex2 & 256)){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the Safari Zone </button>
+            <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+         }
+         /*If player has Lapras*/
+         if(dex2 & 128){
+            options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+         }
+         /*If player doesn't have soul badge*/
+         if(!(badges & 8)){
+            map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+         }
+         /*If player has Doduo*/
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/pinscy.jpg";
+            text.innerHTML=`A wild Scyther and Pinsir appeared! You can only catch one. The other will run away when you throw the ball.`;
+            options.innerHTML=`<button onclick="scyther()"> Throw pok&#233; ball at Scyther </button>
+            <button onclick="pinsir()"> Throw pok&#233; ball at Pinsir </button>
+            <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+            /*If player has Lapras*/
+            if(dex2 & 128){
+               options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+            }
+         }
+         function scyther(){
+            pic.src="assets/scyther.gif";
+            pb--;
+            queryString.set("pb",pb);
+            if(count>1){
+               dex2 += 512;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               text.innerHTML=`Scyther was caught!`;
+               options.innerHTML=`<a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               /*If player has Lapras*/
+               if(dex2 & 128){
+                  options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+               }
+               /*If player doesn't have soul badge*/
+               if(!(badges & 8)){
+                  map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+               }
+               /*If player has Doduo*/
+               if(dex1 & 1){
+                  map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+            }
+            else{
+               text.innerHTML=`Oh no! Scyther broke free! Try again?`;
+               options.innerHTML=`<button onclick="scyther()"> Throw pok&#233; ball at Scyther </button>`;
+               map.innerHTML=``;
+            }
+            count++;
+            inventory.src="inventory.html?"+queryString;
+         }
+         function pinsir(){
+            pic.src="assets/pinsir.gif";
+            pb--;
+            queryString.set("pb",pb);
+            if(count>1){
+               dex2 -= 256;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               text.innerHTML=`Pinsir was caught!`;
+               options.innerHTML=`<a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               /*If player has Lapras*/
+               if(dex2 & 128){
+                  options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+               }
+               /*If player doesn't have soul badge*/
+               if(!(badges & 8)){
+                  map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+               }
+               /*If player has Doduo*/
+               if(dex1 & 1){
+                  map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+            }
+            else{
+               text.innerHTML=`Oh no! Pinsir broke free! Try again?`;
+               options.innerHTML=`<button onclick="pinsir()"> Throw pok&#233; ball at Pinsir </button>`;
+               map.innerHTML=``;
+            }
+            count++;
+            inventory.src="inventory.html?"+queryString;
+         }
+         function leader(){
+            pic.src="assets/koga.jpg";
+            text.innerHTML=`Gym leader Koga wants to fight.`;
+            /*If player has Kadabra*/
+            if(!(dex1 & 2)){
+               text.innerHTML+=`Your Kadabra's psychic type moves easily defeat Koga's poison type pok&#233;mon. 
+                                 Congratulations! You've earned the Soul badge! Koga gives you 5 pok&#233; balls as a reward.`;
+               pb+=5;
+               badges+=8;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               /*If player doesn't have Scyther or Pinsir*/
+               if(!(dex2 & 512) && (dex2 & 256)){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the Safari Zone </button>
+                  <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               }
+               /*If player has Lapras*/
+               if(dex2 & 128){
+                  options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{
+                  map.innerHTML=``;
+               }
+            }
+            else{
+               text.innerHTML+=`Your Diglett's ground type moves easily defeat Koga's poison type pok&#233;mon. 
+                                 Congratulations! You've earned the Soul badge! Koga gives you 5 pok&#233; balls as a reward.`;
+               pb+=5;
+               badges+=8;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               /*If player doesn't have Scyther or Pinsir*/
+               if(!(dex2 & 512) && (dex2 & 256)){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the Safari Zone </button>
+                  <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               }
+               /*If player has Lapras*/
+               if(dex2 & 128){
+                  options.innerHTML+=`<a id="cinnabar" href="cinnabar.html?${queryString}"><button> Go to Cinnabar Island </button></a>`;
+               }
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+            }
+         }
+      </script>
    </body>
 </html>

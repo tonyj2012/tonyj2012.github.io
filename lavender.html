@@ -1,11 +1,88 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Lavender Town </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/lavender.jpg" width="480">
+      <p id="text"> Night falls as you enter Lavender Town and the dense fog obscures all buildings except for a tall tower.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="cerulean" href="cerulean.html"><button> Go to Cerulean City </button></a>
+      <a id="celadon" href="celadon.html"><button> Go to Celadon City </button></a>`;
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         cerulean.href += location.search;
+         celadon.href += location.search;
+         var count=0;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var dex2=+queryString.get("dex2");
+         var badges=+queryString.get("badges");
+         /*If player doesn't have Gengar*/
+         if(!(dex2 & 1024)){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the tower </button>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+            <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+         }
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/ghost.jpg";
+            text.innerHTML=`You enter the spooky tower and find what appear to be tombstones laid out in rows. The fog seems to have pervaded the entire building.
+                              As you ascend to the top of the tower, you come across a ghost!`;
+            /*If player has rainbow badge*/
+            if(badges & 16){
+            options.innerHTML=`<button id="catchmon" onclick="gengar1()"> Use the Silph Scope </button>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+            <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+            }
+            else{
+               options.innerHTML=`<a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+               <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+            }
+         }
+         function gengar1(){
+            pic.src="assets/gengar.gif";
+            text.innerHTML=`You use the Silph Scope to reveal the ghost's identity. A wild Gengar appeared!`;
+            options.innerHTML=`<button onclick="gengar2()"> Throw pok&#233; ball at Gengar </button>
+            <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+            <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+         }
+         function gengar2(){
+            pb--;
+            queryString.set("pb",pb);
+            if(count>1){
+               dex2 += 1024;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               text.innerHTML=`Gengar was caught!`;
+               options.innerHTML=`<a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+               <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               /*If player has Doduo*/
+               if(dex1 & 1){
+                  map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+            }
+            else{
+               text.innerHTML=`Oh no! Gengar broke free! Try again?`;
+               options.innerHTML=`<button onclick="gengar2()"> Throw pok&#233; ball at Gengar </button>`;
+               map.innerHTML=``;
+            }
+            count++;
+            inventory.src="inventory.html?"+queryString;
+         }
+      </script>
    </body>
 </html>

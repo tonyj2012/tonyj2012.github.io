@@ -26,13 +26,16 @@
          var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
          var badges=+queryString.get("badges");
+         /*If player doesn't have Diglett*/
          if(dex1 & 8){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the cave </button>
             <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
          }
+         /*If player doesn't have thunder badge*/
          if(badges & 32){
             map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
          }
+         /*If player has Doduo*/
          if(dex1 & 1){
             map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
          }
@@ -40,7 +43,7 @@
             pic.src="assets/diglett.gif";
             text.innerHTML=`You've entered Diglett's Cave. 
                            A wild Diglett appeared!`;
-            options.innerHTML=`<button onclick="diglett()"> Throw poké ball at Diglett </button>
+            options.innerHTML=`<button onclick="diglett()"> Throw pok&#233; ball at Diglett </button>
                                  <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
          }
          function diglett(){
@@ -57,9 +60,10 @@
          function leader(){
             pic.src="assets/surge.gif";
             text.innerHTML=`Gym leader Lt. Surge wants to fight. `;
+            /*If player has Diglett*/
             if(!(dex1 & 8)){
                text.innerHTML+=`Your Diglett's ground type moves easily defeat Lt. Surge's electric type pok&#233;mon. 
-                                 Congratulations! You've earned the Thunder badge! Lt. Surge gives you 3 poké balls as a reward.`;
+                                 Congratulations! You've earned the Thunder badge! Lt. Surge gives you 3 pok&#233; balls as a reward.`;
                pb+=3;
                badges-=32;
                queryString.set("pb",pb);
@@ -73,7 +77,8 @@
                else{map.innerHTML=``;}
             }
             else{
-               text.innerHTML+=`Lt. Surge defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.`;
+               text.innerHTML+=`Lt. Surge defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.
+                                 Electric type pok&#233;mon are weak to ground type moves.`;
                options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the cave </button>
                                     <a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>`;
             }

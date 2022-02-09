@@ -1,11 +1,130 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Celadon City </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/celadon.jpg" width="480">
+      <p id="text"> You arrive in Celadon City and see a huge mall and a casino. You also find another gym and a small patch of grass with wild pok&#233;mon. 
+                     You can either look in the grass or challenge the gym leader.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="lavender" href="lavender.html"><button> Go to Lavender Town </button></a>
+      <a id="fuschia" href="fuschia.html"><button> Go to Fushia City/Safari Zone </button></a>
+      </div>
+      <div id="map"></div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         lavender.href += location.search;
+         fuschia.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex1=+queryString.get("dex1");
+         var badges=+queryString.get("badges");
+         /*If player doesn't have Doduo*/
+         if(!(dex1 & 1)){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Look in the grass </button>
+            <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+         }
+         /*If player doesn't have rainbow badge*/
+         if(!(badges & 16)){
+            map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;
+         }
+         /*If player has Doduo*/
+         if(dex1 & 1){
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/doduo.gif";
+            text.innerHTML=`A wild Doduo appeared!`;
+            options.innerHTML=`<button onclick="doduo()"> Throw pok&#233; ball at Doduo </button>
+            <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+         }
+         function doduo(){
+            pb--;
+            dex1 += 1;
+            queryString.set("pb",pb);
+            queryString.set("dex1",dex1);
+            inventory.src="inventory.html?"+queryString;
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`Doduo was caught! You teach it fly so you can travel directly anywhere on the map.`;
+            options.innerHTML=`
+            <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+            map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function leader(){
+            pic.src="assets/erika.gif";
+            text.innerHTML=`Gym leader Erika wants to fight.`;
+            /*If player has Charmander*/
+            if(dex1 & 512){
+               text.innerHTML+=`Your Charmander's fire type moves easily defeat Erika's grass type pok&#233;mon. 
+                                 Congratulations! You've earned the Rainbow badge! Erika gives you 3 pok&#233; balls as a reward.
+                                 You also receive a strange pair of binoculars called the Silph Scope. Supposedly, they make people see ghosts.`;
+               pb+=3;
+               badges+=16;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`
+               <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+               <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Look in the grass </button>
+                  <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+                  <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+                  map.innerHTML=``;
+               }
+            }
+            /*If player has Kadabra*/
+            else if(!(dex1 & 2)){
+               text.innerHTML+=`Your Kadabra's psychic type moves easily defeat Erika's poison type pok&#233;mon. 
+                                 Congratulations! You've earned the Rainbow badge! Erika gives you 3 pok&#233; balls as a reward.
+                                 You also receive a strange pair of binoculars called the Silph Scope. Supposedly, they make people see ghosts.`;
+               pb+=3;
+               badges+=16;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               options.innerHTML=`
+               <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+               <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+               if(dex1 & 1){
+                  map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+               }
+               else{
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Look in the grass </button>
+                  <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+                  <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+                  map.innerHTML=``;
+               }
+            }
+            else{
+               text.innerHTML+=`Erika defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.
+                                 Grass/poison type pok&#233;mon are weak to fire, ice, flying, and psychic type moves.`;
+               if(!(dex1 & 1)){
+                  options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Look in the grass </button>
+                  <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+                  <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+               }
+               else{
+                  options.innerHTML=`<a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+                  <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fushia City/Safari Zone </button></a>`;
+               }
+            }
+         }
+      </script>
    </body>
 </html>
