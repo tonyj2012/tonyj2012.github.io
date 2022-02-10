@@ -1,11 +1,115 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Cinnabar Island </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/cinnabar.png" width="480">
+      <p id="text"> You surf on Lapras until you reach Cinnabar Island where you find a locked mansion, a pok&#233;mon gym, and a genetics lab.
+                     You can either explore the lab or challenge the gym leader.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="pallet" href="pallet.html"><button> Go to Pallet Town </button></a>
+      <a id="fuschia" href="fuschia.html"><button> Go to Fuschia City/Safari Zone </button></a>
+      </div>
+      <div id="map">
+         <a id="maps" href="map.html?"><button> Exit to map </button></a>
+      </div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         pallet.href += location.search;
+         fuschia.href += location.search;
+         maps.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex2=+queryString.get("dex2");
+         var badges=+queryString.get("badges");
+         /*If player doesn't have Omastar or Kabutops*/
+         if(!(dex2 & 64) && (dex2 & 32)){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the lab </button>
+            <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+         }
+         /*If player doesn't have volcano badge*/
+         if(!(badges & 2)){
+            map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function catchMon(){
+            pic.src="assets/omakab.gif";
+            text.innerHTML=`While exploring the lab, you meet a scientist who notices the fossil you picked up in Mt. Moon.
+                              They tell you it can be resurrected into a pok&#233;mon! Did you pick up the Dome Fossil (Kabuto) or the Helix Fossil (Omanyte)?`;
+            options.innerHTML=`<button onclick="kabutops()"> Dome Fossil </button>
+            <button onclick="omastar()"> Helix Fossil </button>
+            <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+         }
+         function omastar(){
+            pic.src="assets/omastar.gif";
+            dex2 += 64;
+            queryString.set("dex2",dex2);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`The Helix Fossil was resurrected into the evolved form Omastar!`;
+            options.innerHTML=`
+            <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+            if(!(badges & 2)){
+               map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>
+                              <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            else{
+               map.innerHTML=`
+                              <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+         }
+         function kabutops(){
+            pic.src="assets/kabutops.gif";
+            dex2 -= 32;
+            queryString.set("dex2",dex2);
+            dex.src="dex.html?"+queryString;
+            text.innerHTML=`The Dome Fossil was resurrected into the evolved form Kabutops!`;
+            options.innerHTML=`
+            <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+            <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+            if(!(badges & 2)){
+               map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>
+                              <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            else{
+               map.innerHTML=`
+                              <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+         }
+         function leader(){
+            pic.src="assets/blaine.gif";
+            text.innerHTML=`Gym leader Blaine wants to fight. `;
+            text.innerHTML+=`Your Lapras's water type moves easily defeat Blaine's fire type pok&#233;mon. 
+                                 Congratulations! You've earned the Volcano badge! Blaine gives you 5 pok&#233; balls as a reward.`;
+            pb+=5;
+            badges+=2;
+            queryString.set("pb",pb);
+            queryString.set("badges",badges);
+            inventory.src="inventory.html?"+queryString;
+            /*If player doesn't have Omastar or Kabutops*/
+            if(!(dex2 & 64) && (dex2 & 32)){
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the lab </button>
+               <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+               <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+            }
+            else{
+               options.innerHTML=`
+               <a id="pallet" href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+               <a id="fuschia" href="fuschia.html?${queryString}"><button> Go to Fuschia City/Safari Zone </button></a>`;
+            }
+            map.innerHTML=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+      </script>
    </body>
 </html>

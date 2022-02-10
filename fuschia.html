@@ -120,7 +120,7 @@
          }
          function leader(){
             pic.src="assets/koga.jpg";
-            text.innerHTML=`Gym leader Koga wants to fight.`;
+            text.innerHTML=`Gym leader Koga wants to fight. `;
             /*If player has Kadabra*/
             if(!(dex1 & 2)){
                text.innerHTML+=`Your Kadabra's psychic type moves easily defeat Koga's poison type pok&#233;mon. 
@@ -133,6 +133,10 @@
                /*If player doesn't have Scyther or Pinsir*/
                if(!(dex2 & 512) && (dex2 & 256)){
                   options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the Safari Zone </button>
+                  <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+               }
+               else{
+                  options.innerHTML=`
                   <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
                }
                /*If player has Lapras*/

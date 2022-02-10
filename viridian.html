@@ -27,6 +27,7 @@
          var queryString = new URLSearchParams(location.search);
          var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
+         var dex2=+queryString.get("dex2");
          var badges=+queryString.get("badges");
          /*If player has first 7 badges*/
          if(badges == 218){
@@ -113,7 +114,47 @@
             }
          }
          function leader(){
-         
+            viridian.src="assets/giovanni.webp";
+            text.innerHTML=`Gym leader Giovanni wants to fight. `;
+            /*If player has Omastar*/
+            if(dex2 & 64){
+               text.innerHTML+=`Your Omastar's water type moves easily defeat Giovanni's ground type pok&#233;mon. 
+                                 Congratulations! You've earned the Earth badge! Giovanni gives you 5 pok&#233; balls as a reward.`;
+               pb+=5;
+               badges+=1;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               map.innerHTML=`
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            /*If player has Kabutops*/
+            else if(!(dex2 & 32)){
+               text.innerHTML+=`Your Kabutops's water type moves easily defeat Giovanni's ground type pok&#233;mon. 
+                                 Congratulations! You've earned the Earth badge! Giovanni gives you 5 pok&#233; balls as a reward.`;
+               pb+=5;
+               badges+=1;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               inventory.src="inventory.html?"+queryString;
+               map.innerHTML=`
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            else{
+               text.innerHTML+=`Giovanni defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.
+                                 Ground type pok&#233;mon are weak to grass, ice, and water type moves.`;
+            }
+            /*If player doesn't have either Caterpie or Weedle*/
+            if(!(dex1 & 128) || !(dex1 & 64)){
+               options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
+               <a href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+               <a href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+            }
+            else{
+               options.innerHTML=`
+               <a href="pallet.html?${queryString}"><button> Go to Pallet Town </button></a>
+               <a href="pewter.html?${queryString}"><button> Go to Pewter City/Mt. Moon </button></a>`;
+            }
          }
       </script>
    </body>

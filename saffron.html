@@ -1,11 +1,114 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Saffron City </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/saffron.jpg" width="480">
+      <p id="text"> Saffron City is a bustling metropolis with a huge corporate building, a pok&#233;mon gym, and several residential homes.
+                     It is a hub between Cerulean, Vermilion, Lavender, and Celadon cities.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options">
+      <a id="cerulean" href="cerulean.html"><button> Go to Cerulean City </button></a>
+      <a id="vermilion" href="vermilion.html"><button> Go to Vermilion City </button></a>
+      <a id="lavender" href="lavender.html"><button> Go to Lavender Town </button></a>
+      <a id="celadon" href="celadon.html"><button> Go to Celadon City </button></a>
+      </div>
+      <div id="map">
+         <a id="maps" href="map.html?"><button> Exit to map </button></a>
+      </div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         cerulean.href += location.search;
+         vermilion.href += location.search;
+         lavender.href += location.search;
+         celadon.href += location.search;
+         maps.href += location.search;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex2=+queryString.get("dex2");
+         var badges=+queryString.get("badges");
+         /*If player doesn't have marsh badge*/
+         if(badges & 4){
+            map.innerHTML=`<button onclick="leader()"> Challenge Gym Leader </button>
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+         }
+         function leader(){
+            pic.src="assets/sabrina.gif";
+            text.innerHTML=`Gym leader Sabrina wants to fight. `;
+            /*If player has Scyther*/
+            if(dex2 & 512){
+               startTimer();
+               text.innerHTML+=`Your Scyther's bug type moves easily defeat Sabrina's psychic type pok&#233;mon. 
+                                 Congratulations! You've earned the Marsh badge! Sabrina gives you 5 pok&#233; balls as a reward.
+                                 As a thanks for saving the Silph Co., you receive a Lapras!`;
+               pb+=5;
+               badges-=4;
+               dex2+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               queryString.set("dex2",dex2);
+               inventory.src="inventory.html?"+queryString;
+               dex.src="dex.html?"+queryString;
+               map.innerHTML=`
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            /*If player has Pinsir*/
+            else if(!(dex2 & 256)){
+               startTimer();
+               text.innerHTML+=`Your Pinsir's bug type moves easily defeat Sabrina's psychic type pok&#233;mon. 
+                                 Congratulations! You've earned the Marsh badge! Sabrina gives you 5 pok&#233; balls as a reward.
+                                 As a thanks for saving the Silph Co., you receive a Lapras!`;
+               pb+=5;
+               badges-=4;
+               dex2+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               queryString.set("dex2",dex2);
+               inventory.src="inventory.html?"+queryString;
+               dex.src="dex.html?"+queryString;
+               map.innerHTML=`
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            /*If player has Gengar*/
+            else if(dex2 & 1024){
+               startTimer();
+               text.innerHTML+=`Your Gengar's ghost type moves easily defeat Sabrina's psychic type pok&#233;mon. 
+                                 Congratulations! You've earned the Marsh badge! Sabrina gives you 5 pok&#233; balls as a reward.
+                                 As a thanks for saving the Silph Co., you receive a Lapras! You teach it surf so you can ride to island locations.`;
+               pb+=5;
+               badges-=4;
+               dex2+=128;
+               queryString.set("pb",pb);
+               queryString.set("badges",badges);
+               queryString.set("dex2",dex2);
+               inventory.src="inventory.html?"+queryString;
+               dex.src="dex.html?"+queryString;
+               map.innerHTML=`
+                           <a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            else{
+               text.innerHTML+=`Sabrina defeats you because you don't have enough pok&#233;mon of the right type. Try to catch some more pok&#233;mon.
+                                 Psychic type pok&#233;mon are weak to bug and ghost type moves.`;
+            }
+            options.innerHTML=`<a id="cerulean" href="cerulean.html?${queryString}"><button> Go to Cerulean City </button></a>
+                              <a id="vermilion" href="vermilion.html?${queryString}"><button> Go to Vermilion City </button></a>
+                              <a id="lavender" href="lavender.html?${queryString}"><button> Go to Lavender Town </button></a>
+                              <a id="celadon" href="celadon.html?${queryString}"><button> Go to Celadon City </button></a>`;
+         }
+         function showLapras(){
+               pic.src="assets/lapras.gif";
+         }   
+         function startTimer() {
+             setInterval(showLapras, 9000);
+         }      
+      </script>
    </body>
 </html>

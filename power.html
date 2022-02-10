@@ -1,11 +1,59 @@
 <html>
    <head>
-      <title> Pokémon RBY </title>
+      <title> Pok&#233;mon RBY </title>
       <link rel="icon" href="assets/pokeball.png">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      <h1> HTML Pokémon Game </h1>
+      <h1> Power Plant </h1>
       <hr>
-      <img src="assets/logo.png" width="480">
+      <img id="pic" src="assets/powerplant.jpg" width="480">
+      <p id="text"> You come to an abandoned power plant. You see some pok&#233; balls on the ground, but it feels like some of them are looking at you.
+                     After making your way through the darkened halls, you arrive at a dead end at what looks like it was once an office.</p>
+      <h4> What would you like to do? </h4>
+      <div id="options"></div>
+      <div id="map">
+         <a id="maps" href="map.html"><button> Exit to map </button></a>
+      </div>
+      <hr>
+      <iframe src="inventory.html" id="inventory" height="190" width="215"></iframe>
+      <iframe src="dex.html" id="dex" height="190" width="510"></iframe>
+      <script>
+         inventory.src += location.search;
+         dex.src += location.search;
+         maps.href += location.search;
+         var count=0;
+         var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
+         var dex2=+queryString.get("dex2");
+         /*If player doesn't have Zapdos*/
+         if(dex2 & 8){
+            options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the office </button>`;
+         }
+         function catchMon(){
+            pic.src="assets/zapdos.gif";
+            text.innerHTML=`A wild Zapdos appeared!`;
+            options.innerHTML=`<button onclick="zapdos()"> Throw pok&#233; ball at Zapdos </button>`;
+         }
+         function zapdos(){
+            pb--;
+            queryString.set("pb",pb);
+            if(count>3){
+               dex2 -= 8;
+               queryString.set("dex2",dex2);
+               dex.src="dex.html?"+queryString;
+               text.innerHTML=`Zapdos was caught!`;
+               options.innerHTML=``;
+               map.innerHTML+=`<a href="map.html?${queryString}"><button> Exit to map </button></a>`;
+            }
+            else{
+               text.innerHTML=`Oh no! Zapdos broke free! Try again?`;
+               options.innerHTML=`<button onclick="zapdos()"> Throw pok&#233; ball at Zapdos </button>`;
+               map.innerHTML=``;
+            }
+            count++;
+            inventory.src="inventory.html?"+queryString;
+         }
+      </script>
    </body>
 </html>
