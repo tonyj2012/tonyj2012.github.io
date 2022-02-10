@@ -26,6 +26,12 @@
          var queryString = new URLSearchParams(location.search);
          var pb=+queryString.get("pb");
          var dex2=+queryString.get("dex2");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have Articuno*/
          if(dex2 & 16){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Surf on Lapras </button>`;

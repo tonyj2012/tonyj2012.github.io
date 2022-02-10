@@ -52,7 +52,14 @@
          indigo.href += location.search;
          unknown.href += location.search;
          var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player has volcano badge*/
          if(badges & 2){
             cinnabar.innerHTML=`<button> Cinnabar Island </button>`;

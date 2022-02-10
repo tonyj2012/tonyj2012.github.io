@@ -31,6 +31,12 @@
          var pb=+queryString.get("pb");
          var dex2=+queryString.get("dex2");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have Omastar or Kabutops*/
          if(!(dex2 & 64) && (dex2 & 32)){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Explore the lab </button>

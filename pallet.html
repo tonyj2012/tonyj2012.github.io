@@ -20,8 +20,15 @@
          inventory.src += location.search;
          dex.src += location.search;
          var queryString = new URLSearchParams(location.search);
+         var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
          var dex2=+queryString.get("dex2");
+         /*If player has no pokeballs (glitch)*/
+         if(pb < 1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have a starter*/
          if(!(dex1 & 1024) && !(dex1 & 512) && (dex1 & 256) && (dex1 & 32)){
             options.innerHTML=`<button id="choose" onclick="chooseStarter()"> Choose a pok&#233;mon </button>`;

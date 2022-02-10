@@ -25,6 +25,12 @@
          var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have boulder badge*/
          if(!(badges & 128)){
             map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;

@@ -28,6 +28,12 @@
          var dex1=+queryString.get("dex1");
          var dex2=+queryString.get("dex2");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have Scyther or Pinsir*/
          if(!(dex2 & 512) && (dex2 & 256)){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Enter the Safari Zone </button>

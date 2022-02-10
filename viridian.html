@@ -29,6 +29,12 @@
          var dex1=+queryString.get("dex1");
          var dex2=+queryString.get("dex2");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player has first 7 badges*/
          if(badges == 218){
             map.innerHTML+=`<button onclick="leader()"> Challenge Gym Leader </button>`;

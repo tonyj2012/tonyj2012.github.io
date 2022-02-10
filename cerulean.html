@@ -27,6 +27,12 @@
          var pb=+queryString.get("pb");
          var dex1=+queryString.get("dex1");
          var badges=+queryString.get("badges");
+         /*If player has no pokeballs (glitch)*/
+         if(pb<1){
+            pb=5;
+            queryString.set("pb",pb);
+            inventory.src="inventory.html?"+queryString;
+         }
          /*If player doesn't have Abra*/
          if(dex1 & 4){
             options.innerHTML=`<button id="catchmon" onclick="catchMon()"> Catch a pok&#233;mon </button>
