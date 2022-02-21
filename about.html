@@ -1,0 +1,121 @@
+<html>
+   <head>
+      <link rel="icon" href="assets/favicon.png">
+      <title>Michael Jeandron</title>
+      
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="styles/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/bootstrap-icons.css">
+   </head>
+   <body class="bg-primary text-warning">
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-md navbar-light bg-warning container-fluid">
+         <a class="navbar-brand" href="index.html">
+            <i class="bi bi-house-fill"></i> Michael Jeandron
+         </a>
+         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-options">
+            <i class="navbar-toggler-icon"></i>
+         </button>
+         <div class="collapse navbar-collapse" id="navbar-options">
+            <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="projects.html">
+                     <i class="bi bi-bar-chart-line-fill"></i> Projects
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="blog.html">
+                     <i class="bi bi-book-half"></i> Blog
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="about.html">
+                     <i class="bi bi-person-fill"></i> About
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="contact.html">
+                     <i class="bi bi-envelope-fill"></i> Contact
+                  </a>
+               </li>
+            </ul>
+         </div>  
+      </nav>
+      
+      <!--About Heading-->
+      <div class="container">
+         <h1 class="display-1 mt-4">
+            <i class="bi bi-person-fill"></i> About
+         </h1>
+         <hr>
+      </div>
+      
+      <!--About Me: using Grid & Flex-->
+      <div class="container-fluid text-warning row">
+         <!--Column 1: Social links & Education-->
+         <div class="text-center col-md-2">
+            <h4 class="lead"> Michael Jeandron </h4>
+            <img class="rounded-circle w-50" src="assets/profile.jpg">
+            <div class="d-flex justify-content-center gap-4 m-4">
+               <a href="https://www.facebook.com/michael.jeandron.3" class="text-warning"><i class="bi bi-facebook"></i></a>
+               <a href="https://www.linkedin.com/in/michael-jeandron-9532a957/" class="text-warning"><i class="bi bi-linkedin"></i></a>
+               <a href="https://github.com/tonyj2012" class="text-warning"><i class="bi bi-github"></i></a>
+            </div>
+            <hr>
+            <div class="d-flex row row-cols-1" style="margin-bottom:10px">
+               <span> Education: </span>
+               <small> Computer Science </small>
+               <small> University of New Orleans </small>
+               <p> </p>
+               <hr>
+               <small> Physics, M.S. </small>
+               <small> University of Mississippi </small>
+               <p> </p>
+               <hr>
+               <small> Physics, B.S. </small>
+               <small> Southeastern Louisiana University </small>
+            </div>
+            <hr>
+         </div>
+         <!--Column 2: Name & Skills-->
+         <div class="bg-dark col-md-10">
+            <!--Row 1: Name & Image-->
+            <div class="row">
+               <div class="col-md-8 col-12">
+                  <h1>Michael Jeandron</h1>
+                  <p> Hello, my name is Michael. I received a Bachelor's degree from Southeastern Louisiana University and a Master's degree from The University of Mississippi, both in physics. 
+                        In addition, I'm currently taking more computer science classes at The University of New Orleans. All of these have given me a variety of skills in the fields of computer science, physics, and mathematics. </p>
+               </div>
+               <div class="col-md-4 d-md-block d-none">
+                  <img class="img-fluid" src="assets/profile.jpg">
+               </div>
+            </div>
+            <!--Row 2: Skills-->
+            <hr>
+            <h2 class="display-6">Skills:</h2>
+            <div class="d-flex row row-cols-4">
+               <img src="assets/icon-java.png">
+               <img src="assets/icon-js.png">
+               <img src="assets/icon-html5.png">
+               <img src="assets/icon-css3.png">
+               <img src="assets/icon-python.jpg">
+               <img src="assets/icon-mathematica.png">
+               <img src="assets/icon-latex.jpg">
+               <img src="assets/icon-oracle.png">
+               <!--<img src="assets/icon-react.png">
+               <img src="assets/icon-mongodb.png">
+               <img src="assets/icon-node.webp">
+               <img src="assets/icon-npm.png">
+               <img src="assets/icon-passport.png">
+               <img src="assets/icon-socketio.png">-->
+            </div>
+         </div>
+      </div>
+      <!-- Bootstrap bundle with Popper -->
+      <script src="scripts/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

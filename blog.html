@@ -1,0 +1,167 @@
+<html>
+   <head>
+      <link rel="icon" href="assets/favicon.png">
+      <title>Michael Jeandron</title>
+      
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="styles/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/bootstrap-icons.css">
+      <link rel="stylesheet" href="styles/style.css">
+   </head>
+   <body class="bg-success text-info">
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-md navbar-light bg-info container-fluid">
+         <a class="navbar-brand" href="index.html">
+            <i class="bi bi-house-fill"></i> Michael Jeandron
+         </a>
+         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-options">
+            <i class="navbar-toggler-icon"></i>
+         </button>
+         <div class="collapse navbar-collapse" id="navbar-options">
+            <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="projects.html">
+                     <i class="bi bi-bar-chart-line-fill"></i> Projects
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="blog.html">
+                     <i class="bi bi-book-half"></i> Blog
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="about.html">
+                     <i class="bi bi-person-fill"></i> About
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="contact.html">
+                     <i class="bi bi-envelope-fill"></i> Contact
+                  </a>
+               </li>
+            </ul>
+         </div>  
+      </nav>
+      
+      <!--Blog Page-->
+      <div class="container mt-4">
+         <h1 class="display-1">
+            <i class="bi bi-book-half"></i> Blog
+         </h1>
+         <hr>
+      </div>
+      
+      <!--Carousel-->
+      <div id="blog-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+         <!--Carousel Menu-->
+         <ol class="carousel-indicators my-1">
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="1" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="2" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="3" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="4" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="5" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="6" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="7" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="8" class="active"></li>
+         </ol>
+         <!--Carousel Body-->
+         <div class="carousel-inner text-center">
+            <!--Slide 1-->
+            <div id="slide-1" class="carousel-item active">
+               <img class="img-fluid h-50" src="assets/breakthroughs.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Scientific Breakthroughs </h5>
+                  <p> Amazing Scientific Breakthroughs to Bring us Into the Future </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/breakthroughs.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 2-->
+            <div id="slide-2" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/bias.webp">
+               <div class="carousel-caption text-info">
+                  <h5> Programmed Bias </h5>
+                  <p> Programmed Bias: Do Automated Vehicles Discriminate? </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/bias.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 3-->
+            <div id="slide-3" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/photovoltaic.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Photovoltaic Cells </h5>
+                  <p> How Do Photovoltaic Solar Panels Work? </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/photovoltaic.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 4-->
+            <div id="slide-4" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/superconductor.webp">
+               <div class="carousel-caption text-info">
+                  <h5> Superconductors </h5>
+                  <p> What Is a Superconductor? Everything You Need to Know </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/superconductor.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 5-->
+            <div id="slide-5" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/cavitation.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Ultrasonic Cavitation </h5>
+                  <p> What is Ultrasonic Cavitation and How is it Used in Treatment? </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/cavitation.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 6-->
+            <div id="slide-6" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/rpa.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Robotic Process Automation </h5>
+                  <p> Will RPA Take Human Jobs? </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/rpa.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 7-->
+            <div id="slide-7" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/beamsplitter.png">
+               <div class="carousel-caption text-info">
+                  <h5> Beamsplitters </h5>
+                  <p> What Is a Beamsplitter Used for? 5 Fast Facts </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/beamsplitter.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 8-->
+            <div id="slide-8" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/transmission.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Light Transmission </h5>
+                  <p> How Light Transmission in Optics Revolutionized the Internet </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/transmission.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 9-->
+            <div id="slide-9" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/optics.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Optics </h5>
+                  <p> Types of Optics: A Quick Guide </p>
+                  <button class="btn btn-outline-info" onclick="document.location='articles/optics.html'"> Read More </button>
+               </div>
+            </div>
+         </div>
+         <!--Carousel Controls-->
+         <a class="carousel-control-prev" href="#blog-carousel" role="button" data-bs-slide="prev">
+            <i class="carousel-control-prev-icon"></i>
+         </a>
+         <a class="carousel-control-next" href="#blog-carousel" role="button" data-bs-slide="next">
+            <i class="carousel-control-next-icon"></i>
+         </a>
+      </div>
+      <!-- Bootstrap bundle with Popper -->
+      <script src="scripts/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

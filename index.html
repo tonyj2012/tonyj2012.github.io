@@ -1,21 +1,41 @@
 <html>
    <head>
-      <title> Pok&#233;mon RBY </title>
-      <link rel="icon" href="assets/pokeball.png">
-      <link rel="stylesheet" href="style.css">
+      <link rel="icon" href="assets/favicon.png">
+      <title>Michael Jeandron</title>
+      
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="styles/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/bootstrap-icons.css">
    </head>
-   <body>
-      <h1> HTML Pok&#233;mon Game </h1>
-      <hr>
-      <p>A game of collecting pocket monsters.</p>
-      <img src="assets/rby.jpg" width="480">
-      <p>
-         <a href="intro.html">
-            <button> Start </button>
-         </a>
-      </p>
-      <hr>
-      <h4> Characters and Story by Game Freak/The Pok&#233;mon Company. Code by Michael Jeandron. </h4>
-      <div><h5> For demonstration purposes only. Not for sale or distribution. </h5></div>
+   <body class="bg-dark">
+      <!-- Background Image -->
+      <img class="position-absolute h-100 w-100" src="assets/background2.jpg">
+      <img class="position-absolute h-100 start-50 translate-middle-x" src="assets/binary.jpg">
+      
+      <!-- Landing Page -->
+      <div class="position-relative container text-center h-25 d-flex flex-column fw-bold"><!-- top-50 translate-middle-y -->
+         <h1 class="display-4 text-light py-4 mt-5 mb-0 fw-bold"> Hello! I'm Michael.</h1>
+         <h5 class="text-light fw-bold"> Please take a look at some of the things I've done. </h5>
+         <div>
+            <button class="btn btn-outline-light fw-bold" type="button" onclick="document.location='projects.html'">
+               <i class="bi bi-bar-chart-line-fill"></i> Projects
+            </button>
+            <button class="btn btn-outline-light fw-bold" type="button" onclick="document.location='blog.html'">
+               <i class="bi bi-book-half"></i> Blog
+            </button>
+            <button class="btn btn-outline-light fw-bold" type="button" onclick="document.location='about.html'">
+               <i class="bi bi-person-fill"></i> About
+            </button>
+            <button class="btn btn-outline-light fw-bold" type="button" onclick="document.location='contact.html'">
+               <i class="bi bi-envelope-fill"></i> Contact
+            </button>
+         </div>
+      </div>
+      <!-- Bootstrap bundle with Popper -->
+      <script src="scripts/bootstrap.bundle.min.js"></script>
    </body>
 </html>

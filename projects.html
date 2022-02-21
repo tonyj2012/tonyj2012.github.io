@@ -1,0 +1,166 @@
+<html>
+   <head>
+      <link rel="icon" href="assets/favicon.png">
+      <title>Michael Jeandron</title>
+      
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="styles/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/bootstrap-icons.css">
+      <link rel="stylesheet" href="styles/style.css">
+   </head>
+   <body class="bg-danger text-info">
+      <!--Navbar-->
+      <nav class="navbar navbar-expand-md navbar-light bg-info container-fluid">
+         <a class="navbar-brand" href="index.html">
+            <i class="bi bi-house-fill"></i> Michael Jeandron
+         </a>
+         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-options">
+            <i class="navbar-toggler-icon"></i>
+         </button>
+         <div class="collapse navbar-collapse" id="navbar-options">
+            <ul class="navbar-nav ms-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="projects.html">
+                     <i class="bi bi-bar-chart-line-fill"></i> Projects
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="blog.html">
+                     <i class="bi bi-book-half"></i> Blog
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="about.html">
+                     <i class="bi bi-person-fill"></i> About
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="contact.html">
+                     <i class="bi bi-envelope-fill"></i> Contact
+                  </a>
+               </li>
+            </ul>
+         </div>  
+      </nav>
+      
+      <!--Coding Projects Portfolio-->
+      <div class="container">
+         <h1 class="display-1 mt-4">
+            <i class="bi bi-bar-chart-line-fill"></i> Projects
+         </h1>
+         <hr>
+      </div>
+      <!--Carousel-->
+      <div id="blog-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+         <!--Carousel Menu-->
+         <ol class="carousel-indicators my-1">
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="1" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="2" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="3" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="4" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="5" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="6" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="7" class="active"></li>
+            <li data-bs-target="#blog-carousel" data-bs-slide-to="8" class="active"></li>
+         </ol>
+         <!--Carousel Body-->
+         <div class="carousel-inner text-center">
+            <!--Slide 1-->
+            <div id="slide-1" class="carousel-item active">
+               <img class="img-fluid h-50" src="assets/rby.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Pok&#233;mon! </h5>
+                  <p> A simple pok&#233;mon game written in html, css, and javascript </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/index.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 2-->
+            <div id="slide-2" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/database.png">
+               <div class="carousel-caption text-info">
+                  <h5> Database </h5>
+                  <p> A simple database built with Oracle SQL </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/database.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 3-->
+            <div id="slide-3" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/turing.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Turing Machine </h5>
+                  <p> A diagram of a simple Turing machine </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/turing.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 4-->
+            <div id="slide-4" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/belleII.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Belle II </h5>
+                  <p> Characterization of a piece in a particle physics experiment </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/belleII.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 5-->
+            <div id="slide-5" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/probability.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Probability Problem </h5>
+                  <p> Finding a function to calculate probability in a specific problem </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/probability.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 6-->
+            <div id="slide-6" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/rus.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Resonant Ultrasound Spectroscopy </h5>
+                  <p> Using RUS to characterize a material </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/rus.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 7-->
+            <div id="slide-7" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/chaos.png">
+               <div class="carousel-caption text-info">
+                  <h5> Damped Driven Pendulum </h5>
+                  <p> Examining period doubling as a route to chaos in a pendulum </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/chaos.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 8-->
+            <div id="slide-8" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/feigenbaum.png">
+               <div class="carousel-caption text-info">
+                  <h5> Convection </h5>
+                  <p> Examining period doubling as a route to chaos in Rayleigh-Benard convection </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/feigenbaum.html'"> Read More </button>
+               </div>
+            </div>
+            <!--Slide 9-->
+            <div id="slide-9" class="carousel-item">
+               <img class="img-fluid h-50" src="assets/blackjack.jpg">
+               <div class="carousel-caption text-info">
+                  <h5> Blackjack </h5>
+                  <p> A simple blackjack game written in java </p>
+                  <button class="btn btn-outline-info" onclick="document.location='projects/blackjack.html'"> Read More </button>
+               </div>
+            </div>
+         </div>
+         <!--Carousel Controls-->
+         <a class="carousel-control-prev" href="#blog-carousel" role="button" data-bs-slide="prev">
+            <i class="carousel-control-prev-icon"></i>
+         </a>
+         <a class="carousel-control-next" href="#blog-carousel" role="button" data-bs-slide="next">
+            <i class="carousel-control-next-icon"></i>
+         </a>
+      </div>
+      <!-- Bootstrap bundle with Popper -->
+      <script src="scripts/bootstrap.bundle.min.js"></script>
+   </body>
+</html>
