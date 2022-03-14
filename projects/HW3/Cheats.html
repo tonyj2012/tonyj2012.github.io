@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Pok&#233;mon RBY </title>
+        <link rel="icon" href="assets/pokeball.png">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1> Cheats! </h1>
+        <div id="block"></div>
+        <script>
+            var queryString="";
+            askCheat();
+            function askCheat(){
+                block.innerHTML=(
+                    `<p id="text">
+                    Please enter a cheat code:
+                    </p>
+                    <input type="text" id="inputText">
+                    <input type="button" value="Submit" onclick="checkCheat()">
+                    <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+            }
+            function checkCheat(){
+                if(inputText.value==/*[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){                    */[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){
+                    block.innerHTML=(
+                        `<p id="text">
+                        You may now set the shiny rate for your Pok&#233;mon game (% from 1 to 100):
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkRate()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+                else if(inputText.value==[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){                    /*[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){*/
+                    block.innerHTML=(
+                        `<p id="text">
+                        You may now set the gravity for your Pok&#233;mon game (standard gravity is 0.3, gravity cannot be 0):
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkGrav()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+                else if(inputText.value=="Quicksilver"){
+                    block.innerHTML=(
+                        `<p id="text">
+                        You may now set the speed for your Pok&#233;mon game (standard speed is 4, speed cannot be 0):
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkSpeed()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+                else if(inputText.value=="Superconductor"){
+                    block.innerHTML=(
+                        `<p id="text">
+                        You may now set the friction for your Pok&#233;mon game (standard friction is 0.8, frictionless is 1, friction cannot be 0):
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkFriction()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+                else if(inputText.value=="Ghostbusters"){
+                    queryString+="w=1&";
+                    block.innerHTML=(
+                        `<p id="text">
+                        You may now walk through walls. Be careful when going out of bounds. You may not be able to come back.
+                        </p>
+                        <input type="button" value="Enter Another Code" onclick="askCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+                else{
+                    block.innerHTML=(
+                        `<p id="text">
+                        Invalid cheat code. Please try again:
+                        </p>
+                        <input type="text" id="inputText">
+                        <input type="button" value="Submit" onclick="checkCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+            }
+            function checkRate(){
+                const rate = Number(inputNumber.value);
+                if(Number.isInteger(rate) && rate > 0 && rate <= 100){
+                    setRate(rate);
+                }
+                else{
+                    block.innerHTML=(
+                        `<p id="text">
+                        Please enter an integer from 1 to 100:
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkRate()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+            }
+            function setRate(rate){
+                queryString+="r="+rate+"&";
+                block.innerHTML=(
+                        `<p id="text">
+                        Success! You will now encounter shinies at the rate of ${rate}%.
+                        </p>
+                        <input type="button" value="Enter Another Code" onclick="askCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+            }
+            function checkGrav(){
+                const grav = Number(inputNumber.value);
+                if(!(isNaN(grav)) && grav > 0.0 && grav <= 1.0){
+                    setGrav(grav);
+                }
+                else{
+                    block.innerHTML=(
+                        `<p id="text">
+                        Please enter a real number from 0 to 1, excluding 0:
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkGrav()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+            }
+            function setGrav(grav){
+                queryString+="g="+grav+"&";
+                block.innerHTML=(
+                        `<p id="text">
+                        Success! You will now experience a gravity of ${grav}.
+                        </p>
+                        <input type="button" value="Enter Another Code" onclick="askCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+            }
+            function checkSpeed(){
+                const speed = Number(inputNumber.value);
+                if(!(isNaN(speed)) && speed > 0 && speed <= 10){
+                    setSpeed(speed);
+                }
+                else{
+                    block.innerHTML=(
+                        `<p id="text">
+                        Please enter a real number from 0 to 10, excluding 0:
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkSpeed()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+            }
+            function setSpeed(speed){
+                queryString+="s="+speed+"&";
+                block.innerHTML=(
+                        `<p id="text">
+                        Success! You will now travel at the speed of ${speed}.
+                        </p>
+                        <input type="button" value="Enter Another Code" onclick="askCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+            }
+            function checkFriction(){
+                const friction = Number(inputNumber.value);
+                if(!(isNaN(friction)) && friction > 0 && friction <= 1){
+                    setFriction(friction);
+                }
+                else{
+                    block.innerHTML=(
+                        `<p id="text">
+                        Please enter a real number from 0 to 1, excluding 0:
+                        </p>
+                        <input type="text" id="inputNumber">
+                        <input type="button" value="Submit" onclick="checkFriction()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                }
+            }
+            function setFriction(friction){
+                queryString+="f="+friction+"&";
+                block.innerHTML=(
+                        `<p id="text">
+                        Success! You will now have a friction of ${friction}.
+                        </p>
+                        <input type="button" value="Enter Another Code" onclick="askCheat()">
+                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+            }
+        </script>
+    </body>  
+</html>
