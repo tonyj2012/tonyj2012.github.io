@@ -10,8 +10,8 @@ class Physics{
 
     constructor(speed){
         this.#speed=speed;
-        if(g > 0){
-            this.#gravity=g;
+        if(gr > 0){
+            this.#gravity=gr;
         }
         else{
             this.#gravity=0.3;

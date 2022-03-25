@@ -29,7 +29,6 @@ class Scene{
         for(let y=0;y<rows;y++){
             for(let x=0;x<cols;x++){
                 const tile = worldData[y][x];
-                //console.log(tile); //Test-delete this line after finishing this goal.
                 this.setTile(x,y,tile);
             }
         }
@@ -62,11 +61,17 @@ class Scene{
     drawMonsters(){
         this.#monsters.forEach((monster) => {
             if(monster.getRand() === 0){ //monster.getRand() === 0
-                m=monster.getMon(monster.getChar());
-                i = new Image();
-                i.src="Assets/"+m+"shiny.png";
-                monster.setImage(i);
-                document.getElementById(monster.getChar()).src="Assets/"+m+"shiny.png";
+                try{
+                    const m=monster.getMon(monster.getChar());
+                    const im = new Image();
+                    im.src="Assets/"+m+"shiny.png";
+                    monster.setImage(im);
+                    document.getElementById(monster.getChar()).src="Assets/"+m+"shiny.png";
+                }
+                catch(e){
+                    console.error(e);
+                    console.log("weird error");
+                }
             }
             for(let i=1;i<1025;i*=2){
                 if(monster.getPokemon() === i && ((monster.getSet() === 0 && !(dex1 & i)) || 

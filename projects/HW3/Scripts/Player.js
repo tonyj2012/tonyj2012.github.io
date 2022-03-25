@@ -6,7 +6,7 @@ class Player extends GameObject{
     #currentPose;
 
     constructor(x,y){
-        super(x*Block.SIZE,y*Block.SIZE,Block.SIZE,Block.SIZE,"Assets/Red-sprite-right-1");
+        super(x*Block.SIZE,y*Block.SIZE,Block.SIZE,Block.SIZE,"Assets/Red-sprite-right-1.png");
         if(s > 0){
             this.#physics=new Physics(s);
         }

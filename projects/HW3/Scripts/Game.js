@@ -10,7 +10,6 @@ class Game{
     constructor(){
         this.#isOver = false;
         this.#world = new World();
-        //console.log("world",this.#world); //Test-delete this line after finishing this goal.
         this.#level=0;
         const levelData=this.#world.getLevel(this.#level);
         this.#scene=new Scene(levelData,this.#level);
@@ -20,13 +19,10 @@ class Game{
     }
 
     update(){
-        //console.log("Game Update"); //Test-delete this line after finishing this goal.
         this.#controller.update();
         this.#scene.update();
         if(this.#scene.getExit().isTouching(this.#scene.getPlayer())){
             this.#level++;
-            //this.#scene.setBackground(this.#scene.getRows(),this.#scene.getCols(),backgrounds[this.#level]);
-            //this.render();
             level=this.#level;
             if(this.#level<this.#world.getLength()){
                 this.loadScene();
@@ -36,7 +32,6 @@ class Game{
             }
         }
         if(this.#scene.hasCollisions()){
-            //this.loadScene();
             const num = this.#scene.getCollisions()[0];
             if(num.getSet() === 0 && !(dex1 & num.getPokemon())){
                 dex1+=num.getPokemon();
@@ -93,7 +88,6 @@ class Game{
     }
 
     render(){
-        //console.log("Game Render"); //Test-delete this line after finishing this goal.
         this.#scene.draw();
     }
 

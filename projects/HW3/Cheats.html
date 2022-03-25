@@ -9,7 +9,11 @@
         <h1> Cheats! </h1>
         <div id="block"></div>
         <script>
-            var queryString="";
+            localStorage.removeItem("r");
+            localStorage.removeItem("gr");
+            localStorage.removeItem("s");
+            localStorage.removeItem("f");
+            localStorage.removeItem("w");
             askCheat();
             function askCheat(){
                 block.innerHTML=(
@@ -18,7 +22,7 @@
                     </p>
                     <input type="text" id="inputText">
                     <input type="button" value="Submit" onclick="checkCheat()">
-                    <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                    <a href="Platformer.html?"><button>Go Back</button></a>`)
             }
             function checkCheat(){
                 if(inputText.value==/*[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){                    */[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){
@@ -28,7 +32,7 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkRate()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
                 else if(inputText.value==[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){                    /*[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]){*/
                     block.innerHTML=(
@@ -37,7 +41,7 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkGrav()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
                 else if(inputText.value=="Quicksilver"){
                     block.innerHTML=(
@@ -46,7 +50,7 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkSpeed()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
                 else if(inputText.value=="Superconductor"){
                     block.innerHTML=(
@@ -55,16 +59,16 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkFriction()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
                 else if(inputText.value=="Ghostbusters"){
-                    queryString+="w=1&";
+                    localStorage.setItem("w",1);
                     block.innerHTML=(
                         `<p id="text">
                         You may now walk through walls. Be careful when going out of bounds. You may not be able to come back.
                         </p>
                         <input type="button" value="Enter Another Code" onclick="askCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
                 else{
                     block.innerHTML=(
@@ -73,7 +77,7 @@
                         </p>
                         <input type="text" id="inputText">
                         <input type="button" value="Submit" onclick="checkCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
             }
             function checkRate(){
@@ -88,17 +92,17 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkRate()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
             }
             function setRate(rate){
-                queryString+="r="+rate+"&";
+                localStorage.setItem("r",rate);
                 block.innerHTML=(
                         `<p id="text">
                         Success! You will now encounter shinies at the rate of ${rate}%.
                         </p>
                         <input type="button" value="Enter Another Code" onclick="askCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
             }
             function checkGrav(){
                 const grav = Number(inputNumber.value);
@@ -112,17 +116,17 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkGrav()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
             }
             function setGrav(grav){
-                queryString+="g="+grav+"&";
+                localStorage.setItem("gr",grav);
                 block.innerHTML=(
                         `<p id="text">
                         Success! You will now experience a gravity of ${grav}.
                         </p>
                         <input type="button" value="Enter Another Code" onclick="askCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
             }
             function checkSpeed(){
                 const speed = Number(inputNumber.value);
@@ -136,17 +140,17 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkSpeed()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
             }
             function setSpeed(speed){
-                queryString+="s="+speed+"&";
+                localStorage.setItem("s",speed);
                 block.innerHTML=(
                         `<p id="text">
                         Success! You will now travel at the speed of ${speed}.
                         </p>
                         <input type="button" value="Enter Another Code" onclick="askCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
             }
             function checkFriction(){
                 const friction = Number(inputNumber.value);
@@ -160,17 +164,17 @@
                         </p>
                         <input type="text" id="inputNumber">
                         <input type="button" value="Submit" onclick="checkFriction()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
                 }
             }
             function setFriction(friction){
-                queryString+="f="+friction+"&";
+                localStorage.setItem("f",friction);
                 block.innerHTML=(
                         `<p id="text">
                         Success! You will now have a friction of ${friction}.
                         </p>
                         <input type="button" value="Enter Another Code" onclick="askCheat()">
-                        <a href="Platformer.html?${queryString}"><button>Go Back</button></a>`)
+                        <a href="Platformer.html?"><button>Go Back</button></a>`)
             }
         </script>
     </body>  

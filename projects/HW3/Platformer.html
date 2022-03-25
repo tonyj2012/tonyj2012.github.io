@@ -166,12 +166,36 @@
             </tr>
         </table>
         <script>
-            var queryString = new URLSearchParams(location.search);
-            var r=+queryString.get("r");
-            var g=+queryString.get("g");
-            var s=+queryString.get("s");
-            var f=+queryString.get("f");
-            var w=+queryString.get("w");
+            if(localStorage.getItem("r")===null){
+                var r=0;
+            }
+            else{
+                var r=localStorage.getItem("r");
+            }
+            if(localStorage.getItem("gr")===null){
+                var gr=0;
+            }
+            else{
+                var gr=localStorage.getItem("gr");
+            }
+            if(localStorage.getItem("s")===null){
+                var s=0;
+            }
+            else{
+                var s=localStorage.getItem("s");
+            }
+            if(localStorage.getItem("f")===null){
+                var f=0;
+            }
+            else{
+                var f=localStorage.getItem("f");
+            }
+            if(localStorage.getItem("w")===null){
+                var w=0;
+            }
+            else{
+                var w=localStorage.getItem("w");
+            }
         </script>
         <script src="Scripts/worldData.js"></script>
         <script src="Scripts/World.js"></script>
