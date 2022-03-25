@@ -103,7 +103,7 @@ class Scene{
             case "%": this.#fluxblocks.push(new FluxBlock(x,y)); break;
             case "[": this.#fluxblocks.push(new FluxBlock(x,y,"Assets/tile-rock.png")); break;
             case "(": this.#fluxblocks.push(new FluxBlock(x,y,"Assets/tile-grave.png")); break;
-            case "`": this.#iceblocks.push(new IceBlock(x,y)); break;
+            case "ï": this.#fluxblocks.push(new FluxBlock(x,y,"Assets/tile-truck.jpg")); break;
             case "@": this.#player=new Player(x,y); break;
             case "B": this.#monsters.push(new Pokemon(x,y,tile)); break;
             case "C": this.#monsters.push(new Pokemon(x,y,tile)); break;
