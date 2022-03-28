@@ -4,6 +4,7 @@ class Pokemon extends Block{
     #set;
     #char;
     #rand;
+    #rand2;
     
     constructor(x,y,mon){
         super(x,y,"Assets/"+MONS.get(mon)+".png");
@@ -12,9 +13,14 @@ class Pokemon extends Block{
         this.#char = mon;
         if(r > 0){
             this.#rand=Math.floor(Math.random()*(100/r));
+            this.#rand2=Math.floor(Math.random()*(500/r));
         }
         else{
             this.#rand=Math.floor(Math.random()*20);
+            this.#rand2=Math.floor(Math.random()*100);
+        }
+        if(r === 100){
+            this.#rand2=0;
         }
     }
 
@@ -36,6 +42,9 @@ class Pokemon extends Block{
     }
     getRand(){
         return this.#rand;
+    }
+    getRand2(){
+        return this.#rand2;
     }
 }
 const MONS=new Map([

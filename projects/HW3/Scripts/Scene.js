@@ -61,17 +61,18 @@ class Scene{
     drawMonsters(){
         this.#monsters.forEach((monster) => {
             if(monster.getRand() === 0){ //monster.getRand() === 0
-                try{
-                    const m=monster.getMon(monster.getChar());
-                    const im = new Image();
-                    im.src="Assets/"+m+"shiny.png";
-                    monster.setImage(im);
-                    document.getElementById(monster.getChar()).src="Assets/"+m+"shiny.png";
-                }
-                catch(e){
-                    console.error(e);
-                    console.log("weird error");
-                }
+                const m=monster.getMon(monster.getChar());
+                const im = new Image();
+                im.src="Assets/"+m+"shiny.png";
+                monster.setImage(im);
+                document.getElementById(monster.getChar()).src="Assets/"+m+"shiny.png";
+            }
+            if(monster.getRand2() === 0 && (monster.getChar()==="z" || monster.getChar()==="<")){ //monster.getRand() === 0
+                const m=monster.getMon(monster.getChar());
+                const im = new Image();
+                im.src="Assets/"+m+"shiny2.png";
+                monster.setImage(im);
+                document.getElementById(monster.getChar()).src="Assets/"+m+"shiny2.png";
             }
             for(let i=1;i<1025;i*=2){
                 if(monster.getPokemon() === i && ((monster.getSet() === 0 && !(dex1 & i)) || 
