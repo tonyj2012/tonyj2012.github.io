@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" style="background-image: url('Assets/background.jpg');">
+    <head>
+        <meta charset="utf-8">
+        <title>Pok&#233;mon RBY Platformer</title>
+        <link rel="icon" href="Assets/pokeball.png">
+        <script type="module" src="Scripts/app.js"></script>
+    </head>
+    <body>
+        <table id="container">
+            <tr>
+                <td><div id="canvas"><canvas id="viewport" width="384" height="448" style="border: 1px solid black"></canvas></div></td>
+                <td>
+                    <p id="timer">
+                        <a href="index.html" style="text-decoration:none">
+                            <button> Start Menu </button>
+                         </a>
+                         Elapsed Time: 0s
+                    </p>
+                    <p>
+                        <a href="Cheats.html" style="text-decoration:none">
+                           <button> Enter Cheat Code </button>
+                        </a>
+                        (Current game will not be saved.)
+                    </p>
+                    <p>
+                        <a href="Guide.html" target="_blank" rel="noreferrer noopener" style="text-decoration:none">
+                            <button> Open Guide </button>
+                         </a>
+                         (Opens in a new tab.)
+                     </p>
+                        <table>
+                        <tr>
+                            <td><div id="dex" style="padding:10px; display:inline-block; height:75px; width:360px; border: 1px solid black; background-image: url('Assets/dexbackground.png')">
+                                Inventory:
+                                <hr>
+                                <table>
+                                    <tr>
+                                       <th> <img id="i" src="Assets/silph.png" style="opacity:0" height="32" width="32"> </th>   <!--  512-->
+                                       <th> <img id="b" src="Assets/boulder.png" style="opacity:0" height="32" width="32"> </th> <!--  128  -->
+                                       <th> <img id="c" src="Assets/cascade.png" style="opacity:0" height="32" width="32"> </th> <!--  64   -->
+                                       <th> <img id="t" src="Assets/thunder.png" style="opacity:0" height="32" width="32"> </th> <!--  32   -->
+                                       <th> <img id="r" src="Assets/rainbow.png" style="opacity:0" height="32" width="32"> </th> <!--  16   -->
+                                       <th> <img id="s" src="Assets/soul.png" style="opacity:0" height="32" width="32"> </th>       <!--  8    -->
+                                       <th> <img id="m" src="Assets/marsh.png" style="opacity:0" height="32" width="32"> </th>     <!--  4    -->
+                                       <th> <img id="v" src="Assets/volcano.png" style="opacity:0" height="32" width="32"> </th> <!--  2    -->
+                                       <th> <img id="e" src="Assets/earth.png" style="opacity:0" height="32" width="32"> </th>     <!--  1    -->
+                                       <td><img id="l" style="opacity:0" src="Assets/efbadge2.png" height="32" width="32"></td> <!-- 256 -->
+                                    </tr>
+                                 </table>
+                                                       </div></td>
+                        </tr>
+                        <tr>
+                            <td><div id="dex" style="padding:10px; display:inline-block; height:230px; width:725px; border: 1px solid black; background-image: url('Assets/dexbackground.png')">
+                                Pok&#233;dex:
+                                <hr>
+                                <table>
+                                    <tr>
+                                       <td> <img id="B" src="Assets/bulbasaurthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="Ë" src="Assets/venusaurthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="C" src="Assets/charmanderthumb.png" style="opacity:0" height="32" width="32" </td> <!-- 512  -->
+                                       <td> <img id="Ï" src="Assets/charizardthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="S" src="Assets/squirtlethumb.png" style="opacity:0" height="32" width="32" </td>   <!-- 256  -->
+                                       <td> <img id="Ö" src="Assets/blastoisethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="T" src="Assets/caterpiethumb.png" style="opacity:0" height="32" width="32" </td>   <!-- 128  -->
+                                       <td> <img id="z" src="Assets/butterfreethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="W" src="Assets/weedlethumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="{" src="Assets/beedrillthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id='"' src="Assets/pidgeythumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="$" src="Assets/rattatathumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="&" src="Assets/spearowthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="É" src="Assets/fearowthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="0" src="Assets/ekansthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="P" src="Assets/pikachuthumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 32   -->
+                                       <td> <img id="Í" src="Assets/raichuthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="1" src="Assets/sandshrewthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="'" src="Assets/nidoranFthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="Ç" src="Assets/nidoqueenthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                    </tr>
+                                    <tr>
+                                       <td> <img id="*" src="Assets/nidoranMthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 64   -->
+                                       <td> <img id="Á" src="Assets/nidokingthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="F" src="Assets/clefairythumb.png" style="opacity:0" height="32" width="32" </td>   <!-- 16   -->
+                                       <td> <img id="p" src="Assets/ninetalesthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="+" src="Assets/jigglypuffthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="-" src="Assets/zubatthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="Î" src="Assets/golbatthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="3" src="Assets/oddishthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="/" src="Assets/parasthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="g" src="Assets/venomoththumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="D" src="Assets/diglettthumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 8    -->
+                                       <td> <img id="6" src="Assets/meowththumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="á" src="Assets/psyduckthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="5" src="Assets/mankeythumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="o" src="Assets/arcaninethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="~" src="Assets/poliwraththumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="A" src="Assets/abrathumb.png" style="opacity:0" height="32" width="32" </td>       <!-- 4    -->
+                                       <td> <img id="Q" src="Assets/kadabrathumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 2    -->
+                                       <td> <img id=";" src="Assets/machopthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                       <td> <img id="Ô" src="Assets/machokethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                    </tr>
+                                    <tr>
+                                        <td> <img id="4" src="Assets/bellsproutthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="}" src="Assets/tentacruelthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="." src="Assets/geodudethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Û" src="Assets/gravelerthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="u" src="Assets/rapidashthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ç" src="Assets/slowbrothumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Ó" src="Assets/magnetonthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="7" src="Assets/farfetchdthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="U" src="Assets/doduothumb.png" style="opacity:0" height="32" width="32" </td>      <!-- 1    -->
+                                        <td> <img id="é" src="Assets/dewgongthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="x" src="Assets/mukthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="í" src="Assets/shellderthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="=" src="Assets/gastlythumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="G" src="Assets/gengarthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 1024 -->
+                                        <td> <img id="<" src="Assets/onixthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="8" src="Assets/drowzeethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ó" src="Assets/kinglerthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id=":" src="Assets/voltorbthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="\" src="Assets/exeggcutethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id=">" src="Assets/cubonethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                     </tr>
+                                     <tr>
+                                        <td> <img id="Ä" src="Assets/marowakthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="k" src="Assets/hitmonleethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="n" src="Assets/hitmonchanthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="V" src="Assets/lickitungthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="w" src="Assets/weezingthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="^" src="Assets/rhyhornthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Ü" src="Assets/rhydonthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="_" src="Assets/chanseythumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="|" src="Assets/tangelathumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="j" src="Assets/kangaskhanthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ú" src="Assets/horseathumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ý" src="Assets/seakingthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Â" src="Assets/starmiethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="9" src="Assets/mrmimethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="H" src="Assets/scytherthumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 512  -->
+                                        <td> <img id="2" src="Assets/jynxthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Ú" src="Assets/electabuzzthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="y" src="Assets/magmarthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="N" src="Assets/pinsirthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 256  -->
+                                        <td> <img id="a" src="Assets/taurosthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                     </tr>
+                                     <tr>
+                                        <td> <img id="," src="Assets/magikarpthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ä" src="Assets/gyaradosthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="L" src="Assets/laprasthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 128  -->
+                                        <td> <img id="h" src="Assets/dittothumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="?" src="Assets/eeveethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Ê" src="Assets/vaporeonthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="Ý" src="Assets/jolteonthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="I" src="Assets/porygonthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="O" src="Assets/omastarthumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 64   -->
+                                        <td> <img id="K" src="Assets/kabutopsthumb.png" style="opacity:0" height="32" width="32" </td>   <!-- 32   -->
+                                        <td> <img id="q" src="Assets/aerodactylthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="J" src="Assets/snorlaxthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="E" src="Assets/articunothumb.png" style="opacity:0" height="32" width="32" </td>   <!-- 16   -->
+                                        <td> <img id="Z" src="Assets/zapdosthumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 8    -->
+                                        <td> <img id="M" src="Assets/moltresthumb.png" style="opacity:0" height="32" width="32" </td>    <!-- 4    -->
+                                        <td> <img id="d" src="Assets/dratinithumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="f" src="Assets/dragonairthumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="ë" src="Assets/dragonitethumb.png" style="opacity:0" height="32" width="32" </td>  <!-- 1024 -->
+                                        <td> <img id="X" src="Assets/mewtwothumb.png" style="opacity:0" height="32" width="32" </td>     <!-- 2    -->
+                                        <td> <img id="Y" src="Assets/mewthumb.png" style="opacity:0" height="32" width="32" </td>        <!-- 1    -->
+                                     </tr>
+                                </table>
+                            </div></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <a id="over" hidden="true">false</a>
+        <script>
+            if(localStorage.getItem("r")===null){
+                var r=0;
+            }
+            else{
+                var r=Number(localStorage.getItem("r"));
+            }
+            if(localStorage.getItem("gr")===null){
+                var gr=0;
+            }
+            else{
+                var gr=Number(localStorage.getItem("gr"));
+            }
+            if(localStorage.getItem("s")===null){
+                var s=0;
+            }
+            else{
+                var s=Number(localStorage.getItem("s"));
+            }
+            if(localStorage.getItem("f")===null){
+                var f=0;
+            }
+            else{
+                var f=Number(localStorage.getItem("f"));
+            }
+            if(localStorage.getItem("w")===null){
+                var w=0;
+            }
+            else{
+                var w=Number(localStorage.getItem("w"));
+            }
+        </script>
+        <script src="Scripts/worldData.js"></script>
+        <script src="Scripts/World.js"></script>
+        <script src="Scripts/GameObject.js"></script>
+        <script src="Scripts/Animation.js"></script>
+        <script src="Scripts/Pose.js"></script>
+        <script src="Scripts/Block.js"></script>
+        <script src="Scripts/FluxBlock.js"></script>
+        <script src="Scripts/Pokemon.js"></script>
+        <script src="Scripts/Exit.js"></script>
+        <script src="Scripts/Physics.js"></script>
+        <script src="Scripts/Player.js"></script>
+        <script src="Scripts/Scene.js"></script>
+        <script src="Scripts/Controller.js"></script>
+        <script src="Scripts/View.js"></script>
+        <script src="Scripts/Game.js"></script>
+        <script>
+            window.addEventListener("load",Game.main);
+        </script>
+        <!--<iframe id="dex" height="190" width="510" style="background-image: url('Assets/dexbackground.png')"></iframe>
+        <script>
+            document.querySelector('iframe').contentDocument.write(`Pok&#233;dex:`);
+        </script>-->
+    </body>
+</html>
