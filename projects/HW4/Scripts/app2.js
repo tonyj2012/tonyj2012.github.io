@@ -10,7 +10,7 @@ const state={topScores:[],topScores2:[]};
 window.start = async () => {
     state.topScores=await http.sendGETRequest(GET_LEADERBOARD);
     state.topScores2=await http.sendGETRequest(GET_LEADERBOARD2);
-    console.log(state.topScores2.record);
+    console.log(state.topScores2);
     console.log("test");
     window.localStorage.setItem("top5",state.topScores.record.map(a=>a.time));
     window.localStorage.setItem("top52",state.topScores2.record.map(a=>a.time));

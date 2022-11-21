@@ -45,7 +45,7 @@ const getTop5 = async (newScore,board) => {
     top5.record.push( newScore );
     top5.record.sort( (a,b) => a.time - b.time );
     top5.record.pop();
-    return top5
+    return top5.record;
 }    
 
 window.start=async () => {
