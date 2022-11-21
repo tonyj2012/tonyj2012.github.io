@@ -5,7 +5,7 @@ export const StartMenu=(topScores,topScores2,topScores3,topScores4)=>{
     <div style="text-align:center">
     <table style="text-align:center">
     <tr>
-    <th style="width:100% text-align:center">
+    <th style="width:100% text-align:right">
     <h1>Leaderboards:</h1>
     </th>
     </tr>
