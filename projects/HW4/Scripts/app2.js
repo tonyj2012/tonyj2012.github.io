@@ -10,9 +10,9 @@ const state={topScores:[],topScores2:[]};
 window.start = async () => {
     state.topScores=await http.sendGETRequest(GET_LEADERBOARD);
     state.topScores2=await http.sendGETRequest(GET_LEADERBOARD2);
-    console.log(state.topScores);
-    window.localStorage.setItem("top5",state.topScores.map(a=>a.time));
-    window.localStorage.setItem("top52",state.topScores2.map(a=>a.time));
+    console.log(state.topScores.record);
+    window.localStorage.setItem("top5",state.topScores.record.map(a=>a.time));
+    window.localStorage.setItem("top52",state.topScores2.record.map(a=>a.time));
     view2.StartMenu(state.topScores,state.topScores2);
 }
 
