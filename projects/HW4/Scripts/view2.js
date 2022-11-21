@@ -3,7 +3,7 @@ import Leaderboard from "./Leaderboard.js";
 export const StartMenu=(topScores,topScores2,topScores3,topScores4)=>{
     document.getElementById("view").innerHTML=`
     <div style="text-align:center">
-    <table>
+    <table style="text-align:center">
     <tr>
     <th style="width:100% text-align:center">
     <h1>Leaderboards:</h1>
