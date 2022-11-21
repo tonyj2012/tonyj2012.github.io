@@ -6,6 +6,8 @@ export const StartMenu=(topScores,topScores2,topScores3,topScores4)=>{
     <table>
     <tr>
     <th>
+    </th>
+    <th>
     <h1>Leaderboards:</h1>
     </th>
     </tr>
