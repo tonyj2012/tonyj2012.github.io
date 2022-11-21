@@ -42,9 +42,9 @@ const getTop5 = async (newScore,board) => {
     else{
         top5 = await http.sendGETRequest(GET_LEADERBOARD2);
     }
-    top5.push( newScore );
-    top5.sort( (a,b) => a.time - b.time );
-    top5.pop();
+    top5.record.push( newScore );
+    top5.record.sort( (a,b) => a.time - b.time );
+    top5.record.pop();
     return top5
 }    
 
