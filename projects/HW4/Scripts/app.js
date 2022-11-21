@@ -2,10 +2,10 @@ import * as http from "./http.js";
 
 const BIN_ID="624f499e7b69e806cf4a49eb";
 const BIN_ID2="6251043ed20ace068f95b696";
-const GET_LEADERBOARD=`https://api.jsonbin.io/b/${BIN_ID}/latest`;
-const GET_LEADERBOARD2=`https://api.jsonbin.io/b/${BIN_ID2}/latest`;
-const PUT_LEADERBOARD=`https://api.jsonbin.io/b/${BIN_ID}`;
-const PUT_LEADERBOARD2=`https://api.jsonbin.io/b/${BIN_ID2}`;
+const GET_LEADERBOARD=`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`;
+const GET_LEADERBOARD2=`https://api.jsonbin.io/v3/b/${BIN_ID2}/latest`;
+const PUT_LEADERBOARD=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const PUT_LEADERBOARD2=`https://api.jsonbin.io/v3/b/${BIN_ID2}`;
 const state={timer:0,intervalId:null};
 
 const playGame=async () => {
