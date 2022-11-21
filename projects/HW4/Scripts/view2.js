@@ -1,6 +1,6 @@
 import Leaderboard from "./Leaderboard.js";
 
-export const StartMenu=(topScores,topScores2)=>{
+export const StartMenu=(topScores,topScores2,topScores3,topScores4)=>{
     document.getElementById("view").innerHTML=`
     <div style="text-align:center">
     <table>
@@ -11,10 +11,16 @@ export const StartMenu=(topScores,topScores2)=>{
     </tr>
     <tr>
     <td>
-    ${Leaderboard(topScores.record,"Best Times<br>(Classic)")}
+    ${Leaderboard(topScores.record,"Any%<br>Classic")}
     </td>
     <td>
-    ${Leaderboard(topScores2.record,"Best Times<br>(Walk Through Walls)")}
+    ${Leaderboard(topScores2.record,"Any%<br>Walk Through Walls")}
+    </td>
+    <td>
+    ${Leaderboard(topScores3.record,"Catch 'em All<br>Classic")}
+    </td>
+    <td>
+    ${Leaderboard(topScores4.record,"Catch 'em All<br>Walk Through Walls")}
     </td>
     </tr>
     </table>
