@@ -11,10 +11,10 @@ export const StartMenu=(topScores,topScores2)=>{
     </tr>
     <tr>
     <td>
-    ${Leaderboard(topScores,"Best Times<br>(Classic)")}
+    ${Leaderboard(topScores.record,"Best Times<br>(Classic)")}
     </td>
     <td>
-    ${Leaderboard(topScores2,"Best Times<br>(Walk Through Walls)")}
+    ${Leaderboard(topScores2.record,"Best Times<br>(Walk Through Walls)")}
     </td>
     </tr>
     </table>
