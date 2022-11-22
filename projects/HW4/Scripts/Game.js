@@ -99,6 +99,7 @@ class Game{
             window.requestAnimationFrame(Game.main);
         }
         else{
+            console.log(dex1+dex2+dex3+dex4+dex5+dex6+dex7+dex8+dex9+dex10);
             document.getElementById("over").innerText="true";
             const time=parseInt(document.getElementById("time").innerText,10);
             let gameOverText=
