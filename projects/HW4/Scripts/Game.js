@@ -114,7 +114,7 @@ class Game{
                     <li> Unlock walk through walls: Type "Ghostbusters" </li>
                 </ul>
                 `;
-            if(dex1+dex2+dex3+dex4+dex5+dex6+dex7+dex8+dex9+dex10==20469){
+            if(dex1+dex2+dex3+dex4+dex5+dex6+dex7+dex8+dex9+dex10==20213){
                 if(w){
                     if(game.isTop5(time,window.localStorage.getItem("top54").split(","))){
                         gameOverText+=`<hr>
