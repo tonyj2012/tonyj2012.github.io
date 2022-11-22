@@ -2,10 +2,16 @@ import * as http from "./http.js";
 
 const BIN_ID="624f499e7b69e806cf4a49eb";
 const BIN_ID2="6251043ed20ace068f95b696";
+const BIN_ID3="637c00a42b3499323b06a041";
+const BIN_ID4="637c009d0e6a79321e50868c";
 const GET_LEADERBOARD=`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`;
 const GET_LEADERBOARD2=`https://api.jsonbin.io/v3/b/${BIN_ID2}/latest`;
+const GET_LEADERBOARD3=`https://api.jsonbin.io/v3/b/${BIN_ID3}/latest`;
+const GET_LEADERBOARD4=`https://api.jsonbin.io/v3/b/${BIN_ID4}/latest`;
 const PUT_LEADERBOARD=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
 const PUT_LEADERBOARD2=`https://api.jsonbin.io/v3/b/${BIN_ID2}`;
+const PUT_LEADERBOARD3=`https://api.jsonbin.io/v3/b/${BIN_ID3}`;
+const PUT_LEADERBOARD4=`https://api.jsonbin.io/v3/b/${BIN_ID4}`;
 const state={timer:0,intervalId:null};
 
 const playGame=async () => {
@@ -39,8 +45,14 @@ const getTop5 = async (newScore,board) => {
     if(board===1){
         top5 = await http.sendGETRequest(GET_LEADERBOARD);
     }
-    else{
+    if(board===2){
         top5 = await http.sendGETRequest(GET_LEADERBOARD2);
+    }
+    if(board===3){
+        top5 = await http.sendGETRequest(GET_LEADERBOARD3);
+    }
+    if(board===4){
+        top5 = await http.sendGETRequest(GET_LEADERBOARD4);
     }
     top5.record.push( newScore );
     top5.record.sort( (a,b) => a.time - b.time );
@@ -73,8 +85,14 @@ window.updateLeaderboard=async(board)=>{
     if(board===1){
         await http.sendPUTRequest(PUT_LEADERBOARD, top5);
     }
-    else{
+    if(board===2){
         await http.sendPUTRequest(PUT_LEADERBOARD2, top5);
+    }
+    if(board===3){
+        await http.sendPUTRequest(PUT_LEADERBOARD3, top5);
+    }
+    if(board===4){
+        await http.sendPUTRequest(PUT_LEADERBOARD4, top5);
     }
 }
 

@@ -113,32 +113,64 @@ class Game{
                     <li> Unlock walk through walls: Type "Ghostbusters" </li>
                 </ul>
                 `;
-            if(w){
-                if(game.isTop5(time,window.localStorage.getItem("top52").split(","))){
-                    gameOverText+=`<hr>
-                        New top 5 time! Please enter your name:
-                        <section>
-                            <input id="name" type="text" placeholder="Your Name">
-                            <input onclick="updateLeaderboard(2)" type="button" value="Submit">
-                        </section>
-                    </div>`;
+            if(dex1+dex2+dex3+dex4+dex5+dex6+dex7+dex8+dex9+dex10==20469){
+                if(w){
+                    if(game.isTop5(time,window.localStorage.getItem("top54").split(","))){
+                        gameOverText+=`<hr>
+                            New top 5 time! Please enter your name:
+                            <section>
+                                <input id="name" type="text" placeholder="Your Name">
+                                <input onclick="updateLeaderboard(4)" type="button" value="Submit">
+                            </section>
+                        </div>`;
+                    }
+                    else{
+                        gameOverText+=`</div>`
+                    }
                 }
                 else{
-                    gameOverText+=`</div>`
+                    if(game.isTop5(time,window.localStorage.getItem("top53").split(","))){
+                        gameOverText+=`<hr>
+                            New top 5 time! Please enter your name:
+                            <section>
+                                <input id="name" type="text" placeholder="Your Name">
+                                <input onclick="updateLeaderboard(3)" type="button" value="Submit">
+                            </section>
+                        </div>`;
+                    }
+                    else{
+                        gameOverText+=`</div>`
+                    }
                 }
             }
             else{
-                if(game.isTop5(time,window.localStorage.getItem("top5").split(","))){
-                    gameOverText+=`<hr>
-                        New top 5 time! Please enter your name:
-                        <section>
-                            <input id="name" type="text" placeholder="Your Name">
-                            <input onclick="updateLeaderboard(1)" type="button" value="Submit">
-                        </section>
-                    </div>`;
+                if(w){
+                    if(game.isTop5(time,window.localStorage.getItem("top52").split(","))){
+                        gameOverText+=`<hr>
+                            New top 5 time! Please enter your name:
+                            <section>
+                                <input id="name" type="text" placeholder="Your Name">
+                                <input onclick="updateLeaderboard(2)" type="button" value="Submit">
+                            </section>
+                        </div>`;
+                    }
+                    else{
+                        gameOverText+=`</div>`
+                    }
                 }
                 else{
-                    gameOverText+=`</div>`
+                    if(game.isTop5(time,window.localStorage.getItem("top5").split(","))){
+                        gameOverText+=`<hr>
+                            New top 5 time! Please enter your name:
+                            <section>
+                                <input id="name" type="text" placeholder="Your Name">
+                                <input onclick="updateLeaderboard(1)" type="button" value="Submit">
+                            </section>
+                        </div>`;
+                    }
+                    else{
+                        gameOverText+=`</div>`
+                    }
                 }
             }
             canvas.innerHTML=gameOverText

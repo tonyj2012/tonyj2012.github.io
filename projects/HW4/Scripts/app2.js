@@ -18,6 +18,8 @@ window.start = async () => {
     state.topScores4=await http.sendGETRequest(GET_LEADERBOARD4);
     window.localStorage.setItem("top5",state.topScores.record.map(a=>a.time));
     window.localStorage.setItem("top52",state.topScores2.record.map(a=>a.time));
+    window.localStorage.setItem("top53",state.topScores3.record.map(a=>a.time));
+    window.localStorage.setItem("top54",state.topScores4.record.map(a=>a.time));
     view2.StartMenu(state.topScores,state.topScores2,state.topScores3,state.topScores4);
 }
 
