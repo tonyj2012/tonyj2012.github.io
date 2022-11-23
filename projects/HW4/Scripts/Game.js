@@ -107,10 +107,10 @@ class Game{
                 Try playing again with some of the following cheat codes:<br>
                 <ul>
                     <li> Unlock shiny rate: Type the smallest number <br>expressible as the sum of two positive cubes <br>in three different ways. </li>
-                    <li> Unlock gravity: Type the smallest number <br>expressible as the sum of two positive cubes <br>in two different ways. </li>
+                    <li> Unlock walk through walls: Type the smallest number <br>expressible as the sum of two positive cubes <br>in two different ways. </li>
                     <li> Unlock speed: Type "Quicksilver" </li>
                     <li> Unlock friction: Type "Superconductor" </li>
-                    <li> Unlock walk through walls: Type "Ghostbusters" </li>
+                    <li> Unlock gravity: Type "General Relativity" </li>
                 </ul>
                 `;
             if(dex1+dex2+dex3+dex4+dex5+dex6+dex7+dex8+dex9+dex10==20213){
